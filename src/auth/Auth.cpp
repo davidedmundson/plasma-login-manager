@@ -34,7 +34,7 @@
 
 #include <unistd.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Auth::SocketServer : public QLocalServer {
         Q_OBJECT
     public slots:
@@ -102,7 +102,7 @@ namespace SDDM {
         static std::unique_ptr<Auth::SocketServer> self;
         if (!self) {
             self.reset(new SocketServer());
-            self->listen(QStringLiteral("sddm-auth-%1").arg(QUuid::createUuid().toString(QUuid::WithoutBraces)));
+            self->listen(QStringLiteral("plasmalogin-auth-%1").arg(QUuid::createUuid().toString(QUuid::WithoutBraces)));
         }
         return self.get();
     }
@@ -219,16 +219,16 @@ namespace SDDM {
 
     void Auth::Private::childExited(int exitCode, QProcess::ExitStatus exitStatus) {
         if (exitStatus != QProcess::NormalExit) {
-            qWarning("Auth: sddm-helper (%s) crashed (exit code %d)",
+            qWarning("Auth: plasmalogin-helper (%s) crashed (exit code %d)",
                      qPrintable(child->arguments().join(QLatin1Char(' '))),
                      HelperExitStatus(exitStatus));
             Q_EMIT qobject_cast<Auth*>(parent())->error(child->errorString(), ERROR_INTERNAL);
         }
 
         if (exitCode == HELPER_SUCCESS)
-            qDebug() << "Auth: sddm-helper exited successfully";
+            qDebug() << "Auth: plasmalogin-helper exited successfully";
         else
-            qWarning("Auth: sddm-helper exited with %d", exitCode);
+            qWarning("Auth: plasmalogin-helper exited with %d", exitCode);
 
         Q_EMIT qobject_cast<Auth*>(parent())->finished((Auth::HelperExitStatus)exitCode);
     }
@@ -381,7 +381,7 @@ namespace SDDM {
             args << QStringLiteral("--display-server") << d->displayServerCmd;
         if (d->greeter)
             args << QStringLiteral("--greeter");
-        d->child->start(QStringLiteral("%1/sddm-helper").arg(QStringLiteral(LIBEXEC_INSTALL_DIR)), args);
+        d->child->start(QStringLiteral("%1/plasmalogin-helper").arg(QStringLiteral(LIBEXEC_INSTALL_DIR)), args);
     }
 
     void Auth::stop() {

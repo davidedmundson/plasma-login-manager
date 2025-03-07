@@ -17,8 +17,8 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_SCREENMODEL_H
-#define SDDM_SCREENMODEL_H
+#ifndef PLASMALOGIN_SCREENMODEL_H
+#define PLASMALOGIN_SCREENMODEL_H
 
 #include <QAbstractListModel>
 
@@ -28,7 +28,7 @@
 
 class QScreen;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class ScreenModelPrivate;
 
     class ScreenModel : public QAbstractListModel {
@@ -62,4 +62,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_SCREENMODEL_H
+#endif // PLASMALOGIN_SCREENMODEL_H

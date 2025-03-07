@@ -17,12 +17,12 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_MESSAGES_H
-#define SDDM_MESSAGES_H
+#ifndef PLASMALOGIN_MESSAGES_H
+#define PLASMALOGIN_MESSAGES_H
 
 #include <QFlags>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     enum class GreeterMessages {
         Connect = 0,
         Login,
@@ -54,4 +54,4 @@ namespace SDDM {
     Q_DECLARE_OPERATORS_FOR_FLAGS(Capabilities)
 }
 
-#endif // SDDM_MESSAGES_H
+#endif // PLASMALOGIN_MESSAGES_H

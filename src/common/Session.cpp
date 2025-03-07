@@ -33,7 +33,7 @@
 
 const QString s_entryExtention = QStringLiteral(".desktop");
 
-namespace SDDM {
+namespace PLASMALOGIN {
     // QSettings::IniFormat can't be used to read .desktop files due to different
     // syntax of values (escape sequences, quoting, automatic QStringList detection).
     // So implement yet another .desktop file parser.
@@ -252,7 +252,7 @@ namespace SDDM {
         m_isHidden = hidden.toLower() == QLatin1String("true");
         QString noDisplay = settings.value(QLatin1String("NoDisplay"), QString()).toString();
         m_isNoDisplay = noDisplay.toLower() == QLatin1String("true");
-        QString additionalEnv = settings.value(QLatin1String("X-SDDM-Env"), QString()).toString();
+        QString additionalEnv = settings.value(QLatin1String("X-PLASMALOGIN-Env"), QString()).toString();
         m_additionalEnv = parseEnv(additionalEnv);
         settings.endGroup();
 
@@ -266,7 +266,7 @@ namespace SDDM {
         return *this;
     }
 
-    QProcessEnvironment SDDM::Session::parseEnv(const QString &list)
+    QProcessEnvironment PLASMALOGIN::Session::parseEnv(const QString &list)
     {
         QProcessEnvironment env;
         const auto entryList = QStringView{list}.split(u',', Qt::SkipEmptyParts);

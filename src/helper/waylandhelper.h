@@ -22,7 +22,7 @@
 
 #include <QProcess>
 
-namespace SDDM {
+namespace PLASMALOGIN {
 class WaylandSocketWatcher;
 
 class WaylandHelper : public QObject
@@ -47,7 +47,7 @@ private:
     bool startProcess(const QString &cmd, QProcess **p = nullptr);
 };
 
-} // namespace SDDM
+} // namespace PLASMALOGIN
 
 
 

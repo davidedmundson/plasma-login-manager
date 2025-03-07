@@ -6,7 +6,7 @@
 
 ## 0.21.0
 ----------------------
-    + sddm-greeter can now be built for both Qt5 and Qt6
+    + plasmalogin-greeter can now be built for both Qt5 and Qt6
     + Themes can now declare their Qt version compatibility to control which greeter gets used
     + New CMake option INSTALL_PAM_CONFIGURATION (defaults to ON)
     + Bulgarian translation added
@@ -33,13 +33,13 @@
     + Display information and errors from PAM in the greeter (#1486)
     * Remove the Passwd backend, make PAM mandatory
     * Bump minimum CMake version to 3.4
-    * Introduce SDDM_INITIAL_VT as the TTY to reach out to
+    * Introduce PLASMALOGIN_INITIAL_VT as the TTY to reach out to
     * Set XCURSOR_SIZE in XorgDisplayServer::start
-    * Make it possible to start ConsoleKit D-Bus service during SDDM startup
+    * Make it possible to start ConsoleKit D-Bus service during PLASMALOGIN startup
     * pam: Do not use tally2 if faillock is present
     * Bump to Qt 5.15, port away from deprecated APIs
     * remove `-logfile` arg that causes server to fail
-    - Set RUNTIME_DIR to /run/sddm when using systemd to follow FHS 3.0
+    - Set RUNTIME_DIR to /run/plasmalogin when using systemd to follow FHS 3.0
     - Use avatars in FacesDir first and if not found search other locations
     - Switch to using libxau with `FamilyWild` (#1230)
     - New interface to access config values from themes (#1097)
@@ -98,7 +98,7 @@
     + Added possibility to change border width of ComboBox widget.
     + Added missing utmp/wtmp/btmp handling.
     + Make greeter see icons set by AccountsServices.
-    - Fix sddm.conf man page syntax error and update.
+    - Fix plasmalogin.conf man page syntax error and update.
     - Fix ComboBox widget.
     - Fix connection of PropertiesChanged event for LogindSeat.
     - Avoid race conditions with Xsetup.
@@ -135,7 +135,7 @@
 ## 0.15.0 - 2017-08-30
 ----------------------
     - Fix display of avatars.
-    + New sddm.conf option EnableHiDPI to allow opt out of auto scaling.
+    + New plasmalogin.conf option EnableHiDPI to allow opt out of auto scaling.
     - Theme cursor.
     + Support optional kwallet PAM opening.
     + Autologin, try last successful login if not explicitly set.
@@ -144,10 +144,10 @@
 
 ## 0.14.0 - 2016-08-28
 ----------------------
-    + New sddm.conf option EnableAvatars (useful for slow filesystems)
-    + New sddm.conf option UserAuthFile on the XDisplay section
+    + New plasmalogin.conf option EnableAvatars (useful for slow filesystems)
+    + New plasmalogin.conf option UserAuthFile on the XDisplay section
       to change the default Xauthority file name and path.
-    + New sddm.conf option SessionLogFile on XDisplay and WaylandDisplay
+    + New plasmalogin.conf option SessionLogFile on XDisplay and WaylandDisplay
       sections to change the default user session log location.
     + ComboBox now exposes the arrow background color as
       "arrowColor" property.
@@ -211,9 +211,9 @@
     * FreeBSD build fixes.
     * Fixed Qt 5.5 build warnings.
     * Honor TryExec in Xsession desktop files.
-    * New sddm.conf option XephyrPath.
-    * New sddm.conf option ServerArguments.
-    * New sddm.conf option DisplayStopCommand.
+    * New plasmalogin.conf option XephyrPath.
+    * New plasmalogin.conf option ServerArguments.
+    * New plasmalogin.conf option DisplayStopCommand.
     * Enable QT_NO_CAST_FROM_ASCII.
     * Replace non-free background with a CC-BY-SA alternative for
       the maldives theme.
@@ -232,7 +232,7 @@
 ----------------------
     + Set default icon theme from greeter theme configuration.
     + Set cursor theme according to greeter theme configuration.
-    - Never permit a login as the sddm user (CVE-2014-7271)
+    - Never permit a login as the plasmalogin user (CVE-2014-7271)
     - Fix race condition in XAUTHORITY code (CVE-2014-7272)
     - XAUTHORITY is no longer owned by root
     - Flush any buffered data to the log file, this writes immediately
@@ -262,7 +262,7 @@
     + User filtering based on shell
     + User filtering based on name
     + PAM is now optional
-    - No longer stripping comments from sddm.conf on login
+    - No longer stripping comments from plasmalogin.conf on login
     - Fixed incorrect PAM handling causing PulseAudio to fail.
     - Fixed a crash caused by incorrect handling of PAM
     - Fixed compilation with Qt 5.0.0
@@ -270,9 +270,9 @@
     - Fixed missing environment variables
     - Find empty displays and virtual desktops automatically
     - Exit gracefully when SIGTERM is received
-    - Fix running SDDM under a Plasma 5.0 desktop.
+    - Fix running PLASMALOGIN under a Plasma 5.0 desktop.
     * Now using Oxygen instead of Geosans Light
-    * Added man pages sddm(1), sddm-greeter(1), sddm.conf(5)
+    * Added man pages plasmalogin(1), plasmalogin-greeter(1), plasmalogin.conf(5)
     * Removed custom session
     * Failsafe is no longer the default session
 

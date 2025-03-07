@@ -17,15 +17,15 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_POWERMANAGER_H
-#define SDDM_POWERMANAGER_H
+#ifndef PLASMALOGIN_POWERMANAGER_H
+#define PLASMALOGIN_POWERMANAGER_H
 
 #include <QObject>
 #include <QVector>
 
 #include "Messages.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class PowerManagerBackend;
 
     class PowerManager : public QObject {
@@ -49,4 +49,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_POWERMANAGER_H
+#endif // PLASMALOGIN_POWERMANAGER_H

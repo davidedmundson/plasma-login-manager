@@ -20,7 +20,7 @@
 #ifndef KEYBOARDBACKEND_H
 #define KEYBOARDBACKEND_H
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class KeyboardModel;
     class KeyboardModelPrivate;
 

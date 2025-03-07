@@ -17,14 +17,14 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_GREETERPROXY_H
-#define SDDM_GREETERPROXY_H
+#ifndef PLASMALOGIN_GREETERPROXY_H
+#define PLASMALOGIN_GREETERPROXY_H
 
 #include <QObject>
 
 class QLocalSocket;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class SessionModel;
 
     class GreeterProxyPrivate;
@@ -88,4 +88,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_GREETERPROXY_H
+#endif // PLASMALOGIN_GREETERPROXY_H

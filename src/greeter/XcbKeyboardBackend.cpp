@@ -28,7 +28,7 @@
 
 #include <QSocketNotifier>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     XcbKeyboardBackend::XcbKeyboardBackend(KeyboardModelPrivate *kmp) : KeyboardBackend(kmp) {
     }
 

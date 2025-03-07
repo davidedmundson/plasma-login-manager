@@ -29,7 +29,7 @@ private slots:
     {
         QLocale::setDefault(QLocale::c());
         auto fileName = QFINDTESTDATA("plasmawayland-dev.desktop");
-        SDDM::Session session(SDDM::Session::WaylandSession, fileName);
+        PLASMALOGIN::Session session(PLASMALOGIN::Session::WaylandSession, fileName);
         QVERIFY(session.isValid());
         QCOMPARE(session.xdgSessionType(), QStringLiteral("wayland"));
         QCOMPARE(session.fileName(), fileName);
@@ -46,7 +46,7 @@ private slots:
     {
         QLocale::setDefault(QLocale{QStringLiteral("ko_KO")});
         auto fileName = QFINDTESTDATA("plasmawayland-dev.desktop");
-        SDDM::Session session(SDDM::Session::WaylandSession, fileName);
+        PLASMALOGIN::Session session(PLASMALOGIN::Session::WaylandSession, fileName);
         QVERIFY(session.isValid());
         QCOMPARE(session.xdgSessionType(), QStringLiteral("wayland"));
         QCOMPARE(session.fileName(), fileName);

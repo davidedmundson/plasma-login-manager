@@ -24,7 +24,7 @@
 
 #include "XAuth.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 class XOrgUserHelper : public QObject
 {
@@ -56,6 +56,6 @@ private:
     void displayFinished();
 };
 
-} // namespace SDDM
+} // namespace PLASMALOGIN
 
 #endif // XORGUSERHELPER_H

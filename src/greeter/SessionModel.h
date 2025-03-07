@@ -18,8 +18,8 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_SESSIONMODEL_H
-#define SDDM_SESSIONMODEL_H
+#ifndef PLASMALOGIN_SESSIONMODEL_H
+#define PLASMALOGIN_SESSIONMODEL_H
 
 #include "Session.h"
 
@@ -27,7 +27,7 @@
 
 #include <QHash>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class SessionModelPrivate;
 
     class SessionModel : public QAbstractListModel {
@@ -63,4 +63,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_SESSIONMODEL_H
+#endif // PLASMALOGIN_SESSIONMODEL_H

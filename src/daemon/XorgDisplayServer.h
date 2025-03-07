@@ -18,15 +18,15 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_XORGDISPLAYSERVER_H
-#define SDDM_XORGDISPLAYSERVER_H
+#ifndef PLASMALOGIN_XORGDISPLAYSERVER_H
+#define PLASMALOGIN_XORGDISPLAYSERVER_H
 
 #include "DisplayServer.h"
 #include "XAuth.h"
 
 class QProcess;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class XorgDisplayServer : public DisplayServer {
         Q_OBJECT
         Q_DISABLE_COPY(XorgDisplayServer)
@@ -56,4 +56,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_XORGDISPLAYSERVER_H
+#endif // PLASMALOGIN_XORGDISPLAYSERVER_H

@@ -18,12 +18,12 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_THEMEMETADATA_H
-#define SDDM_THEMEMETADATA_H
+#ifndef PLASMALOGIN_THEMEMETADATA_H
+#define PLASMALOGIN_THEMEMETADATA_H
 
 #include <QObject>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class ThemeMetadataPrivate;
 
     class ThemeMetadata : public QObject {
@@ -45,4 +45,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_THEMEMETADATA_H
+#endif // PLASMALOGIN_THEMEMETADATA_H

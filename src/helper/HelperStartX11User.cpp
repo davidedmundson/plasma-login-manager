@@ -34,15 +34,15 @@
 #include "SignalHandler.h"
 
 void X11UserHelperMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
-    SDDM::messageHandler(type, context, QStringLiteral("X11UserHelper: "), msg);
+    PLASMALOGIN::messageHandler(type, context, QStringLiteral("X11UserHelper: "), msg);
 }
 
 int main(int argc, char** argv)
 {
     qInstallMessageHandler(X11UserHelperMessageHandler);
     QCoreApplication app(argc, argv);
-    SDDM::SignalHandler s;
-    QObject::connect(&s, &SDDM::SignalHandler::sigtermReceived, &app, [] {
+    PLASMALOGIN::SignalHandler s;
+    QObject::connect(&s, &PLASMALOGIN::SignalHandler::sigtermReceived, &app, [] {
         QCoreApplication::instance()->exit(-1);
     });
 
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
         return 33;
     }
 
-    using namespace SDDM;
+    using namespace PLASMALOGIN;
     XOrgUserHelper helper;
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &helper, [&helper] {
         qDebug("quitting helper-start-x11");

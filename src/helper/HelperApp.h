@@ -28,7 +28,7 @@
 
 class QLocalSocket;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Backend;
     class UserSession;
     class HelperApp : public QCoreApplication

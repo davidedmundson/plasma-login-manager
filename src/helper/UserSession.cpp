@@ -43,7 +43,7 @@
 #include <login_cap.h>
 #endif
 
-namespace SDDM {
+namespace PLASMALOGIN {
     UserSession::UserSession(HelperApp *parent)
         : QProcess(parent)
     {
@@ -107,7 +107,7 @@ namespace SDDM {
                 setProgram(args.takeFirst());
                 setArguments(args);
             } else {
-                setProgram(QStringLiteral(LIBEXEC_INSTALL_DIR "/sddm-helper-start-x11user"));
+                setProgram(QStringLiteral(LIBEXEC_INSTALL_DIR "/plasmalogin-helper-start-x11user"));
                 setArguments({m_displayServerCmd, command});
             }
             QProcess::start();
@@ -115,7 +115,7 @@ namespace SDDM {
         } else if (env.value(QStringLiteral("XDG_SESSION_TYPE")) == QLatin1String("wayland")) {
             if (env.value(QStringLiteral("XDG_SESSION_CLASS")) == QLatin1String("greeter")) {
                 Q_ASSERT(!m_displayServerCmd.isEmpty());
-                setProgram(QStringLiteral(LIBEXEC_INSTALL_DIR "/sddm-helper-start-wayland"));
+                setProgram(QStringLiteral(LIBEXEC_INSTALL_DIR "/plasmalogin-helper-start-wayland"));
                 setArguments({m_displayServerCmd, m_path});
                 QProcess::start();
                 isWaylandGreeter = true;

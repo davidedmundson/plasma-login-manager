@@ -30,7 +30,7 @@
 
 class QSocketNotifier;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class XcbKeyboardBackend : public KeyboardBackend {
     public:
         XcbKeyboardBackend(KeyboardModelPrivate *kmp);

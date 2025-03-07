@@ -17,14 +17,14 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_SIGNALHANDLER_H
-#define SDDM_SIGNALHANDLER_H
+#ifndef PLASMALOGIN_SIGNALHANDLER_H
+#define PLASMALOGIN_SIGNALHANDLER_H
 
 #include <QObject>
 
 class QSocketNotifier;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class SignalHandler : public QObject {
         Q_OBJECT
         Q_DISABLE_COPY(SignalHandler)
@@ -55,4 +55,4 @@ namespace SDDM {
         QSocketNotifier *sncustom { nullptr };
     };
 }
-#endif // SDDM_SIGNALHANDLER_H
+#endif // PLASMALOGIN_SIGNALHANDLER_H

@@ -17,12 +17,12 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_WAYLANDDISPLAYSERVER_H
-#define SDDM_WAYLANDDISPLAYSERVER_H
+#ifndef PLASMALOGIN_WAYLANDDISPLAYSERVER_H
+#define PLASMALOGIN_WAYLANDDISPLAYSERVER_H
 
 #include "DisplayServer.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 class WaylandDisplayServer : public DisplayServer
 {
@@ -43,6 +43,6 @@ public Q_SLOTS:
     void setupDisplay();
 };
 
-} // namespace SDDM
+} // namespace PLASMALOGIN
 
-#endif // SDDM_WAYLANDDISPLAYSERVER_H
+#endif // PLASMALOGIN_WAYLANDDISPLAYSERVER_H

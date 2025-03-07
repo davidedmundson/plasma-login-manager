@@ -31,7 +31,7 @@ const QString DISPLAYMANAGER_PATH = QStringLiteral("/org/freedesktop/DisplayMana
 const QString DISPLAYMANAGER_SEAT_PATH = QStringLiteral("/org/freedesktop/DisplayManager/Seat");
 const QString DISPLAYMANAGER_SESSION_PATH = QStringLiteral("/org/freedesktop/DisplayManager/Session");
 
-namespace SDDM {
+namespace PLASMALOGIN {
     DisplayManager::DisplayManager(QObject *parent) : QObject(parent) {
         // create adaptor
         new DisplayManagerAdaptor(this);

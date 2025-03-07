@@ -17,14 +17,14 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_USERMODEL_H
-#define SDDM_USERMODEL_H
+#ifndef PLASMALOGIN_USERMODEL_H
+#define PLASMALOGIN_USERMODEL_H
 
 #include <QAbstractListModel>
 
 #include <QHash>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class UserModelPrivate;
 
     class UserModel : public QAbstractListModel {
@@ -63,4 +63,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_USERMODEL_H
+#endif // PLASMALOGIN_USERMODEL_H

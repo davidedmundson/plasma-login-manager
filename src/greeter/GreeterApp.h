@@ -27,7 +27,7 @@
 
 class QTranslator;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Configuration;
     class ThemeMetadata;
     class ThemeConfig;

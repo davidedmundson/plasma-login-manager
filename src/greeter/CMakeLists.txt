@@ -1,10 +1,10 @@
 if(QT_MAJOR_VERSION EQUAL "5")
-    # Keep the unversioned name for Qt5. When upgrading SDDM, the old daemon
-    # might still be running and only know about "sddm-greeter". Keeping the
+    # Keep the unversioned name for Qt5. When upgrading PLASMALOGIN, the old daemon
+    # might still be running and only know about "plasmalogin-greeter". Keeping the
     # previous name around also helps users calling it directly.
-    set(GREETER_TARGET sddm-greeter)
+    set(GREETER_TARGET plasmalogin-greeter)
 else()
-    set(GREETER_TARGET sddm-greeter-qt${QT_MAJOR_VERSION})
+    set(GREETER_TARGET plasmalogin-greeter-qt${QT_MAJOR_VERSION})
 endif()
 
 message(STATUS "Building greeter for Qt ${QT_MAJOR_VERSION} as ${GREETER_TARGET}")

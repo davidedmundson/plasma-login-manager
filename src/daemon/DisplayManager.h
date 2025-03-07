@@ -17,15 +17,15 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_DISPLAYMANAGER_H
-#define SDDM_DISPLAYMANAGER_H
+#ifndef PLASMALOGIN_DISPLAYMANAGER_H
+#define PLASMALOGIN_DISPLAYMANAGER_H
 
 #include <QObject>
 
 #include <QDBusObjectPath>
 #include <QList>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class DisplayManagerSeat;
     class DisplayManagerSession;
 
@@ -123,4 +123,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_DISPLAYMANAGER_H
+#endif // PLASMALOGIN_DISPLAYMANAGER_H

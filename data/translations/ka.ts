@@ -6,7 +6,7 @@
     <extra-po-header-last_translator>Temuri Doghonadze &lt;temuri.doghonadze@gmail.com&gt;</extra-po-header-last_translator>
     <extra-po-header-po_revision_date></extra-po-header-po_revision_date>
     <extra-po-header-pot_creation_date></extra-po-header-pot_creation_date>
-    <extra-po-header-project_id_version>SDDM</extra-po-header-project_id_version>
+    <extra-po-header-project_id_version>PLASMALOGIN</extra-po-header-project_id_version>
     <extra-po-header-x_generator>Poedit 3.1.1</extra-po-header-x_generator>
     <extra-po-headers>Project-Id-Version,POT-Creation-Date,PO-Revision-Date,Last-Translator,Language-Team,Language,MIME-Version,Content-Type,Content-Transfer-Encoding,Plural-Forms,X-Language,X-Qt-Contexts,X-Generator</extra-po-headers>
 <context>

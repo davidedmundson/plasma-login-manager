@@ -30,7 +30,7 @@
 #include <memory>
 #include <pwd.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class User {
     public:
         User(const struct passwd *data, const QString icon) :

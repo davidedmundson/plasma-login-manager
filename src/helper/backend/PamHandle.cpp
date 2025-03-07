@@ -22,7 +22,7 @@
 
 #include <QtCore/QDebug>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     bool PamHandle::putEnv(const QProcessEnvironment& env) {
         const auto envs = env.toStringList();
         for (const QString& s : envs) {

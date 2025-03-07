@@ -51,7 +51,7 @@
 
 static const QEvent::Type StartupEventType = static_cast<QEvent::Type>(QEvent::registerEventType());
 
-namespace SDDM {
+namespace PLASMALOGIN {
     GreeterApp::GreeterApp(QObject *parent)
         : QObject(parent)
     {
@@ -188,10 +188,10 @@ namespace SDDM {
         view->rootContext()->setContextProperty(QStringLiteral("screenModel"), screenModel);
         view->rootContext()->setContextProperty(QStringLiteral("userModel"), m_userModel);
         view->rootContext()->setContextProperty(QStringLiteral("config"), m_themeConfig);
-        view->rootContext()->setContextProperty(QStringLiteral("sddm"), m_proxy);
+        view->rootContext()->setContextProperty(QStringLiteral("plasmalogin"), m_proxy);
         view->rootContext()->setContextProperty(QStringLiteral("keyboard"), m_keyboard);
         view->rootContext()->setContextProperty(QStringLiteral("primaryScreen"), QGuiApplication::primaryScreen() == screen);
-        view->rootContext()->setContextProperty(QStringLiteral("__sddm_errors"), QString());
+        view->rootContext()->setContextProperty(QStringLiteral("__plasmalogin_errors"), QString());
 
         // get theme main script
         QString mainScript = QStringLiteral("%1/%2").arg(m_themePath).arg(m_metadata->mainScript());
@@ -214,7 +214,7 @@ namespace SDDM {
             }
 
             qWarning() << "Fallback to embedded theme";
-            view->rootContext()->setContextProperty(QStringLiteral("__sddm_errors"), errors);
+            view->rootContext()->setContextProperty(QStringLiteral("__plasmalogin_errors"), errors);
             view->setSource(QUrl(QStringLiteral("qrc:/theme/Main.qml")));
         });
 
@@ -324,14 +324,14 @@ int main(int argc, char **argv)
 
     // Install message handler
     if (!testMode)
-        qInstallMessageHandler(SDDM::GreeterMessageHandler);
+        qInstallMessageHandler(PLASMALOGIN::GreeterMessageHandler);
 
     // HiDPI
     bool hiDpiEnabled = false;
     if (platform == QStringLiteral("xcb"))
-        hiDpiEnabled = SDDM::mainConfig.X11.EnableHiDPI.get();
+        hiDpiEnabled = PLASMALOGIN::mainConfig.X11.EnableHiDPI.get();
     else if (platform.startsWith(QStringLiteral("wayland")))
-        hiDpiEnabled = SDDM::mainConfig.Wayland.EnableHiDPI.get();
+        hiDpiEnabled = PLASMALOGIN::mainConfig.Wayland.EnableHiDPI.get();
     if (hiDpiEnabled) {
         qDebug() << "High-DPI autoscaling Enabled";
         QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -351,7 +351,7 @@ int main(int argc, char **argv)
     qputenv("KDE_DEBUG", "1");
 
     // Qt IM module
-    QString inputMethod = SDDM::mainConfig.InputMethod.get();
+    QString inputMethod = PLASMALOGIN::mainConfig.InputMethod.get();
     // Using qtvirtualkeyboard as IM on wayland doesn't really work,
     // it has to be done by the compositor instead.
     if (platform.startsWith(QStringLiteral("wayland")) && inputMethod == QStringLiteral("qtvirtualkeyboard"))
@@ -361,16 +361,16 @@ int main(int argc, char **argv)
         qputenv("QT_IM_MODULE", inputMethod.toLocal8Bit());
 
     QGuiApplication app(argc, argv);
-    SDDM::SignalHandler s;
-    QObject::connect(&s, &SDDM::SignalHandler::sigtermReceived, &app, [] {
+    PLASMALOGIN::SignalHandler s;
+    QObject::connect(&s, &PLASMALOGIN::SignalHandler::sigtermReceived, &app, [] {
         QCoreApplication::instance()->exit(-1);
     });
-    QObject::connect(&s, &SDDM::SignalHandler::sigintReceived, &app, [] {
+    QObject::connect(&s, &PLASMALOGIN::SignalHandler::sigintReceived, &app, [] {
         QCoreApplication::instance()->exit(-1);
     });
 
     QCommandLineParser parser;
-    parser.setApplicationDescription(TR("SDDM greeter"));
+    parser.setApplicationDescription(TR("PLASMALOGIN greeter"));
     parser.addHelpOption();
     parser.addVersionOption();
 
@@ -385,11 +385,11 @@ int main(int argc, char **argv)
 
     parser.process(app);
 
-    SDDM::GreeterApp *greeter = new SDDM::GreeterApp();
+    PLASMALOGIN::GreeterApp *greeter = new PLASMALOGIN::GreeterApp();
     greeter->setTestModeEnabled(parser.isSet(testModeOption));
     greeter->setSocketName(parser.value(socketOption));
     greeter->setThemePath(parser.value(themeOption));
-    QCoreApplication::postEvent(greeter, new SDDM::StartupEvent());
+    QCoreApplication::postEvent(greeter, new PLASMALOGIN::StartupEvent());
 
     return app.exec();
 }

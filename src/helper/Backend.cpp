@@ -34,7 +34,7 @@
 #include <login_cap.h>
 #endif
 
-namespace SDDM {
+namespace PLASMALOGIN {
     Backend::Backend(HelperApp* parent)
             : QObject(parent)
             , m_app(parent) {
@@ -76,7 +76,7 @@ namespace SDDM {
         login_cap_t *lc;
 
         if (lc = login_getpwclass(pw)) {
-            // save, clear and later restore SDDM's environment because
+            // save, clear and later restore PLASMALOGIN's environment because
             // setclassenvironment() mangles it
             QProcessEnvironment savedEnv = QProcessEnvironment::systemEnvironment();
             QProcessEnvironment::systemEnvironment().clear();
@@ -95,9 +95,9 @@ namespace SDDM {
 
             // copy all environment variables that are now set
             env.insert(QProcessEnvironment::systemEnvironment());
-            // for sddm itself, we don't want to set LANG from capabilities.
-            // instead, honour sddm_lang variable from rc script
-            if (qobject_cast<HelperApp*>(parent())->user() == QStringLiteral("sddm"))
+            // for plasmalogin itself, we don't want to set LANG from capabilities.
+            // instead, honour plasmalogin_lang variable from rc script
+            if (qobject_cast<HelperApp*>(parent())->user() == QStringLiteral("plasmalogin"))
                 env.insert(QStringLiteral("LANG"), savedLang);
             // finally, restore original helper environment
             QProcessEnvironment::systemEnvironment().clear();

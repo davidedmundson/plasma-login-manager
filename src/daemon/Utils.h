@@ -18,12 +18,12 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_UTILS_H
-#define SDDM_UTILS_H
+#ifndef PLASMALOGIN_UTILS_H
+#define PLASMALOGIN_UTILS_H
 
 #include <random>
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 inline QString generateName(int length) {
     const QString digits = QStringLiteral("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");

@@ -18,8 +18,8 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_SOCKETSERVER_H
-#define SDDM_SOCKETSERVER_H
+#ifndef PLASMALOGIN_SOCKETSERVER_H
+#define PLASMALOGIN_SOCKETSERVER_H
 
 #include <QObject>
 #include <QString>
@@ -29,14 +29,14 @@
 class QLocalServer;
 class QLocalSocket;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class SocketServer : public QObject {
         Q_OBJECT
         Q_DISABLE_COPY(SocketServer)
     public:
         explicit SocketServer(QObject *parent = 0);
 
-        bool start(const QString &sddmName);
+        bool start(const QString &plasmaloginName);
         void stop();
 
         QString socketAddress() const;
@@ -61,4 +61,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_SOCKETSERVER_H
+#endif // PLASMALOGIN_SOCKETSERVER_H

@@ -22,6 +22,6 @@ export prev=$1
 export next=$2
 
 export contributors=`git shortlog v${prev}..develop -sn --no-merges | awk -F'\t' '{print $2}' | tr -s "\\n" "*" | sed -e 's@*@, @g' -e 's@, $@\n@g'`
-export logs=`git shortlog v${prev}..develop --no-merges --format="%s - [link](https://github.com/sddm/sddm/commit/%h)" | sed -e 's,^      ,  * ,g'`
+export logs=`git shortlog v${prev}..develop --no-merges --format="%s - [link](https://github.com/plasmalogin/plasmalogin/commit/%h)" | sed -e 's,^      ,  * ,g'`
 
 cat template.txt | envsubst

@@ -29,7 +29,7 @@
 
 #include <sys/socket.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     std::once_flag signalsInitialized;
 
     int sigintFd[2];

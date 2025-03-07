@@ -35,7 +35,7 @@
 #include <QtCore/QProcess>
 #include <VirtualTerminal.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     Greeter::Greeter(Display *parent)
         : QObject(parent)
         , m_display(parent)
@@ -83,7 +83,7 @@ namespace SDDM {
     QString Greeter::greeterPathForQt(int qtVersion)
     {
         const QString suffix = qtVersion == 5 ? QString() : QStringLiteral("-qt%1").arg(qtVersion);
-        return QStringLiteral(BIN_INSTALL_DIR "/sddm-greeter%1").arg(suffix);
+        return QStringLiteral(BIN_INSTALL_DIR "/plasmalogin-greeter%1").arg(suffix);
     }
 
     bool Greeter::start() {
@@ -229,7 +229,7 @@ namespace SDDM {
             qDebug() << "Greeter starting...";
 
             // start greeter
-            m_auth->setUser(QStringLiteral("sddm"));
+            m_auth->setUser(QStringLiteral("plasmalogin"));
             m_auth->setDisplayServerCommand(m_displayServerCmd);
             m_auth->setGreeter(true);
             m_auth->setSession(cmd.join(QLatin1Char(' ')));

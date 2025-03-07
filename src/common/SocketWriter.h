@@ -18,15 +18,15 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_SOCKETWRITER_H
-#define SDDM_SOCKETWRITER_H
+#ifndef PLASMALOGIN_SOCKETWRITER_H
+#define PLASMALOGIN_SOCKETWRITER_H
 
 #include <QDataStream>
 #include <QLocalSocket>
 
 #include "Session.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class SocketWriter {
         Q_DISABLE_COPY(SocketWriter)
     public:
@@ -44,4 +44,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_SOCKETWRITER_H
+#endif // PLASMALOGIN_SOCKETWRITER_H

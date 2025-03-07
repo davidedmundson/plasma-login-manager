@@ -52,7 +52,7 @@ jobs:
           set -x
           dnf --assumeyes install dnf-plugins-core
           if [[ "${{ matrix.container-image }}" =~ "centos" ]]; then dnf --assumeyes config-manager --set-enabled crb && dnf --assumeyes install epel-release; fi
-          dnf --assumeyes builddep sddm
+          dnf --assumeyes builddep plasmalogin
           if [ "${{ matrix.qt }}" = "qt5" ] && [[ "${{ matrix.container-image }}" =~ "fedora" ]]; then dnf --assumeyes install qt5-qtbase-devel qt5-qtdeclarative-devel qt5-qttools-devel; fi
           dnf --assumeyes install --allowerasing --nobest clang clazy
       - name: Dependencies (deb-type)
@@ -61,7 +61,7 @@ jobs:
           set -x
           sed -i '/^#\sdeb-src /s/^#//' "/etc/apt/sources.list"
           apt-get update -y
-          DEBIAN_FRONTEND=noninteractive apt-get build-dep sddm -y
+          DEBIAN_FRONTEND=noninteractive apt-get build-dep plasmalogin -y
           if [ "${{ matrix.qt }}" = "qt6" ]; then
             DEBIAN_FRONTEND=noninteractive apt-get install clang clazy qt6-base-dev qt6-base-dev-tools qt6-tools-dev qt6-declarative-dev qml6-module-qtqml-workerscript qml6-module-qtquick-window -y
           else

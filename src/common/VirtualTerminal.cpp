@@ -40,7 +40,7 @@
 #define RELEASE_DISPLAY_SIGNAL (SIGRTMAX)
 #define ACQUIRE_DISPLAY_SIGNAL (SIGRTMAX - 1)
 
-namespace SDDM {
+namespace PLASMALOGIN {
     namespace VirtualTerminal {
 #ifdef __FreeBSD__
         const char *defaultVtPath = "/dev/ttyv0";

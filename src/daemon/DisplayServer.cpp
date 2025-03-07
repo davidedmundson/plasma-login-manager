@@ -22,7 +22,7 @@
 
 #include "Display.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     DisplayServer::DisplayServer(Display *parent) : QObject(parent), m_displayPtr(parent) {
     }
 

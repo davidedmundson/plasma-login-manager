@@ -24,7 +24,7 @@
 #include <QObject>
 #include <QString>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class KeyboardModelPrivate;
     class KeyboardBackend;
 

@@ -17,12 +17,12 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_VIRTUALTERMINAL_H
-#define SDDM_VIRTUALTERMINAL_H
+#ifndef PLASMALOGIN_VIRTUALTERMINAL_H
+#define PLASMALOGIN_VIRTUALTERMINAL_H
 
 #include <QString>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     namespace VirtualTerminal {
         extern const char *defaultVtPath;
 
@@ -33,4 +33,4 @@ namespace SDDM {
     }
 }
 
-#endif // SDDM_VIRTUALTERMINAL_H
+#endif // PLASMALOGIN_VIRTUALTERMINAL_H

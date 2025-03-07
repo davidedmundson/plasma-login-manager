@@ -26,7 +26,7 @@
 #include <QSettings>
 #include <QStringList>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     ThemeConfig::ThemeConfig(const QString &path, QObject *parent)
         : QQmlPropertyMap(this, parent) {
         setTo(path);

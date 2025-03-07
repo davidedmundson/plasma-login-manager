@@ -18,13 +18,13 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_XAUTH_H
-#define SDDM_XAUTH_H
+#ifndef PLASMALOGIN_XAUTH_H
+#define PLASMALOGIN_XAUTH_H
 
 #include <QString>
 #include <QTemporaryFile>
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 class XAuth
 {
@@ -51,6 +51,6 @@ private:
     QByteArray m_cookie;
 };
 
-} // namespace SDDM
+} // namespace PLASMALOGIN
 
-#endif // SDDM_XAUTH_H
+#endif // PLASMALOGIN_XAUTH_H

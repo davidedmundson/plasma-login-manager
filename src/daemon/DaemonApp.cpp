@@ -35,14 +35,14 @@
 
 #include <iostream>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     DaemonApp *DaemonApp::self = nullptr;
 
     DaemonApp::DaemonApp(int &argc, char **argv) : QCoreApplication(argc, argv) {
         // point instance to this
         self = this;
 
-        qInstallMessageHandler(SDDM::DaemonMessageHandler);
+        qInstallMessageHandler(PLASMALOGIN::DaemonMessageHandler);
 
         // log message
         qDebug() << "Initializing...";
@@ -57,7 +57,7 @@ namespace SDDM {
         }
 
         // If ConsoleKit isn't started by the OS init system (FreeBSD, for instance),
-        // we start it ourselves during the sddm startup
+        // we start it ourselves during the plasmalogin startup
         if (consoleKitServiceActivatable) {
             QDBusReply<bool> registeredReply = QDBusConnection::systemBus().interface()->isServiceRegistered(QStringLiteral("org.freedesktop.ConsoleKit"));
             if (registeredReply.isValid() && registeredReply.value() == false) {
@@ -128,7 +128,7 @@ int main(int argc, char **argv) {
         arguments << QString::fromLocal8Bit(argv[i]);
 
     if (arguments.contains(QStringLiteral("--help")) || arguments.contains(QStringLiteral("-h"))) {
-        std::cout << "Usage: sddm [options]\n"
+        std::cout << "Usage: plasmalogin [options]\n"
                   << "Options: \n"
                   << "  --test-mode         Start daemon in test mode" << std::endl
                   << "  --example-config    Print the complete current configuration to stdout" << std::endl;
@@ -138,13 +138,13 @@ int main(int argc, char **argv) {
 
     // spit a complete config file on stdout and quit on demand
     if (arguments.contains(QStringLiteral("--example-config"))) {
-        SDDM::mainConfig.wipe();
-        QTextStream(stdout) << SDDM::mainConfig.toConfigFull();
+        PLASMALOGIN::mainConfig.wipe();
+        QTextStream(stdout) << PLASMALOGIN::mainConfig.toConfigFull();
         return EXIT_SUCCESS;
     }
 
     // create application
-    SDDM::DaemonApp app(argc, argv);
+    PLASMALOGIN::DaemonApp app(argc, argv);
 
     // run application
     return app.exec();

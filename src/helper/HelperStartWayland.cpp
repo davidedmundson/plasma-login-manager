@@ -34,15 +34,15 @@
 #include "SignalHandler.h"
 
 void WaylandHelperMessageHandler(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
-    SDDM::messageHandler(type, context, QStringLiteral("WaylandHelper: "), msg);
+    PLASMALOGIN::messageHandler(type, context, QStringLiteral("WaylandHelper: "), msg);
 }
 
 int main(int argc, char** argv)
 {
     qInstallMessageHandler(WaylandHelperMessageHandler);
     QCoreApplication app(argc, argv);
-    using namespace SDDM;
-    SDDM::SignalHandler s;
+    using namespace PLASMALOGIN;
+    PLASMALOGIN::SignalHandler s;
 
     Q_ASSERT(::getuid() != 0);
     if (argc != 3) {
@@ -51,7 +51,7 @@ int main(int argc, char** argv)
     }
 
     WaylandHelper helper;
-    QObject::connect(&s, &SDDM::SignalHandler::sigtermReceived, &app, [] {
+    QObject::connect(&s, &PLASMALOGIN::SignalHandler::sigtermReceived, &app, [] {
         QCoreApplication::exit(0);
     });
     QObject::connect(&app, &QCoreApplication::aboutToQuit, &helper, [&helper] {
@@ -64,7 +64,7 @@ int main(int argc, char** argv)
     });
 
     if (!helper.startCompositor(app.arguments()[1])) {
-        qWarning() << "SDDM was unable to start" << app.arguments()[1];
+        qWarning() << "PLASMALOGIN was unable to start" << app.arguments()[1];
         return Auth::HELPER_DISPLAYSERVER_ERROR;
     }
     helper.startGreeter(app.arguments()[2]);

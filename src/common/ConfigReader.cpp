@@ -62,7 +62,7 @@ QTextStream &operator<<(QTextStream &str, const bool &val) {
     return str;
 }
 
-namespace SDDM {
+namespace PLASMALOGIN {
     // has to be specialised because QTextStream reads only words into a QString
     template <> void ConfigEntry<QString>::setValue(const QString &str) {
         m_value = str.trimmed();
@@ -143,9 +143,9 @@ namespace SDDM {
     void ConfigBase::load()
     {
         //order of priority from least influence to most influence, is
-        // * m_sysConfigDir (system settings /usr/lib/sddm/sddm.conf.d/) in alphabetical order
-        // * m_configDir (user settings in /etc/sddm.conf.d/) in alphabetical order
-        // * m_path (classic fallback /etc/sddm.conf)
+        // * m_sysConfigDir (system settings /usr/lib/plasmalogin/plasmalogin.conf.d/) in alphabetical order
+        // * m_configDir (user settings in /etc/plasmalogin.conf.d/) in alphabetical order
+        // * m_path (classic fallback /etc/plasmalogin.conf)
 
         QStringList files;
         QDateTime latestModificationTime = QFileInfo(m_path).lastModified();

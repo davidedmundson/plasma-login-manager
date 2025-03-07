@@ -40,9 +40,9 @@ set(DAEMON_SOURCES
 
 list(APPEND DAEMON_SOURCES ${CMAKE_SOURCE_DIR}/src/common/VirtualTerminal.cpp)
 
-qt_add_dbus_adaptor(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.DisplayManager.xml"          "DisplayManager.h" SDDM::DisplayManager)
-qt_add_dbus_adaptor(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.DisplayManager.Seat.xml"     "DisplayManager.h" SDDM::DisplayManagerSeat)
-qt_add_dbus_adaptor(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.DisplayManager.Session.xml"  "DisplayManager.h" SDDM::DisplayManagerSession)
+qt_add_dbus_adaptor(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.DisplayManager.xml"          "DisplayManager.h" PLASMALOGIN::DisplayManager)
+qt_add_dbus_adaptor(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.DisplayManager.Seat.xml"     "DisplayManager.h" PLASMALOGIN::DisplayManagerSeat)
+qt_add_dbus_adaptor(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.DisplayManager.Session.xml"  "DisplayManager.h" PLASMALOGIN::DisplayManagerSession)
 
 set_source_files_properties("${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.login1.Manager.xml" PROPERTIES
    INCLUDE "LogindDBusTypes.h"
@@ -59,21 +59,21 @@ qt_add_dbus_interface(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.fr
 qt_add_dbus_interface(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.login1.Seat.xml"  "Login1Seat")
 qt_add_dbus_interface(DAEMON_SOURCES "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.login1.Session.xml"  "Login1Session")
 
-add_executable(sddm ${DAEMON_SOURCES})
-target_link_libraries(sddm
+add_executable(plasmalogin ${DAEMON_SOURCES})
+target_link_libraries(plasmalogin
                       Qt${QT_MAJOR_VERSION}::DBus
                       Qt${QT_MAJOR_VERSION}::Network
                       Qt${QT_MAJOR_VERSION}::Qml
                       ${LIBXAU_LINK_LIBRARIES}
                       ${LIBXCB_LIBRARIES})
 if(PAM_FOUND)
-    target_link_libraries(sddm ${PAM_LIBRARIES})
+    target_link_libraries(plasmalogin ${PAM_LIBRARIES})
 else()
-    target_link_libraries(sddm crypt)
+    target_link_libraries(plasmalogin crypt)
 endif()
 
 if(JOURNALD_FOUND)
-    target_link_libraries(sddm ${JOURNALD_LIBRARIES})
+    target_link_libraries(plasmalogin ${JOURNALD_LIBRARIES})
 endif()
 
-install(TARGETS sddm DESTINATION "${CMAKE_INSTALL_BINDIR}")
+install(TARGETS plasmalogin DESTINATION "${CMAKE_INSTALL_BINDIR}")

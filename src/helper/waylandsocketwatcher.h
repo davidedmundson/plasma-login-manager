@@ -25,7 +25,7 @@
 #include <QPointer>
 #include <QTimer>
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 class WaylandSocketWatcher : public QObject
 {
@@ -59,6 +59,6 @@ private:
     QPointer<QFileSystemWatcher> m_watcher;
 };
 
-} // namespace SDDM
+} // namespace PLASMALOGIN
 
 #endif // WAYLANDSOCKETWATCHER_H

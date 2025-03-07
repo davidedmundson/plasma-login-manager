@@ -22,7 +22,7 @@
 
 #include <QtCore/QObject>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     struct Indicator {
         bool enabled { false };
         uint8_t mask { 0 };

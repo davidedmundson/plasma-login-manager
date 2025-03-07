@@ -20,7 +20,7 @@
 
 #include "SocketWriter.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     SocketWriter::SocketWriter(QLocalSocket *socket) : socket(socket) {
         output = new QDataStream(&data, QIODevice::WriteOnly);
     }

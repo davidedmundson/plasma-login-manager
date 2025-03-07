@@ -23,7 +23,7 @@
 #include "Seat.h"
 #include "XorgUserDisplayServer.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 XorgUserDisplayServer::XorgUserDisplayServer(Display *parent)
     : DisplayServer(parent)
@@ -99,4 +99,4 @@ void XorgUserDisplayServer::setupDisplay()
 {
 }
 
-} // namespace SDDM
+} // namespace PLASMALOGIN

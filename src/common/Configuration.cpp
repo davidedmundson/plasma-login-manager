@@ -1,5 +1,5 @@
 /*
- * SDDM configuration
+ * PLASMALOGIN configuration
  * Copyright (C) 2014 Martin Bříza <mbriza@redhat.com>
  *
  * This program is free software; you can redistribute it and/or modify
@@ -21,7 +21,7 @@
 #include "Configuration.h"
 #include "Constants.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     MainConfig mainConfig;
     StateConfig stateConfig;
 }

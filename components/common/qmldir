@@ -1,4 +1,4 @@
-module SddmComponents
+module PlasmaLoginComponents
 
 Background 2.0 Background.qml
 Button 2.0 Button.qml

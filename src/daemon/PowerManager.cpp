@@ -28,7 +28,7 @@
 #include <QDBusReply>
 #include <QProcess>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     /************************************************/
     /* POWER MANAGER BACKEND                        */
     /************************************************/

@@ -18,8 +18,8 @@
  *
  */
 
-#ifndef SDDM_AUTH_H
-#define SDDM_AUTH_H
+#ifndef PLASMALOGIN_AUTH_H
+#define PLASMALOGIN_AUTH_H
 
 #include "AuthRequest.h"
 #include "AuthPrompt.h"
@@ -27,7 +27,7 @@
 #include <QtCore/QObject>
 #include <QtCore/QProcessEnvironment>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     /**
     * \brief
     * Main class triggering the authentication and handling all communication
@@ -239,4 +239,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_AUTH_H
+#endif // PLASMALOGIN_AUTH_H

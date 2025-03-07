@@ -17,14 +17,14 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_SEAT_H
-#define SDDM_SEAT_H
+#ifndef PLASMALOGIN_SEAT_H
+#define PLASMALOGIN_SEAT_H
 
 #include <QObject>
 #include <QVector>
 #include "Display.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Display;
 
     class Seat : public QObject {
@@ -38,13 +38,13 @@ namespace SDDM {
         bool canTTY();
 
     public slots:
-        void removeDisplay(SDDM::Display* display);
+        void removeDisplay(PLASMALOGIN::Display* display);
 
     private slots:
         void displayStopped();
 
     private:
-        void startDisplay(SDDM::Display *display, int tryNr = 1);
+        void startDisplay(PLASMALOGIN::Display *display, int tryNr = 1);
 
         QString m_name;
 
@@ -52,4 +52,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_SEAT_H
+#endif // PLASMALOGIN_SEAT_H

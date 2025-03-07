@@ -37,7 +37,7 @@
 #include <Login1Session.h>
 #include <Login1Seat.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     Seat::Seat(const QString &name, QObject *parent) : QObject(parent), m_name(name) {
         createDisplay(Display::defaultDisplayServerType());
     }

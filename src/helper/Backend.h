@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class HelperApp;
     class Backend : public QObject
     {

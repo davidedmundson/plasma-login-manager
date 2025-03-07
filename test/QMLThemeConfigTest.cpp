@@ -29,7 +29,7 @@ class Setup : public QObject
 public slots:
     void qmlEngineAvailable(QQmlEngine *engine)
     {
-        auto *config = new SDDM::ThemeConfig(QStringLiteral("theme.conf"), this);
+        auto *config = new PLASMALOGIN::ThemeConfig(QStringLiteral("theme.conf"), this);
         engine->rootContext()->setContextProperty(QStringLiteral("config"), config);
     }
 };

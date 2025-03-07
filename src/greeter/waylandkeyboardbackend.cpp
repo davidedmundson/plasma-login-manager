@@ -31,7 +31,7 @@
 #include "waylandkeyboardbackend.h"
 #include <qxmlstream.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 WaylandKeyboardBackend::WaylandKeyboardBackend(KeyboardModelPrivate *kmp)
     : KeyboardBackend(kmp)
@@ -45,7 +45,7 @@ WaylandKeyboardBackend::~WaylandKeyboardBackend()
 
 QList<QObject *> parseRules(const QString &filename, int &current)
 {
-    // FIXME: https://github.com/sddm/sddm/pull/1664#discussion_r1115361314
+    // FIXME: https://github.com/plasmalogin/plasmalogin/pull/1664#discussion_r1115361314
     current = 0;
     QFile file(filename);
     qDebug() << "Parsing xkb rules from" << file.fileName();
@@ -115,4 +115,4 @@ void WaylandKeyboardBackend::connectEventsDispatcher(KeyboardModel *model)
     Q_UNUSED(model);
 }
 
-} // namespace SDDM
+} // namespace PLASMALOGIN

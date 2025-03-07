@@ -25,7 +25,7 @@
 #include "waylandkeyboardbackend.h"
 #include "XcbKeyboardBackend.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     /**********************************************/
     /* KeyboardModel                              */
     /**********************************************/

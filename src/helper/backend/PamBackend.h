@@ -29,7 +29,7 @@
 
 #include <security/pam_appl.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class PamHandle;
     class PamBackend;
     class PamData {

@@ -18,8 +18,8 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_MESSAGEHANDLER_H
-#define SDDM_MESSAGEHANDLER_H
+#ifndef PLASMALOGIN_MESSAGEHANDLER_H
+#define PLASMALOGIN_MESSAGEHANDLER_H
 
 #include "Constants.h"
 
@@ -35,7 +35,7 @@
 #include <systemd/sd-journal.h>
 #endif
 
-namespace SDDM {
+namespace PLASMALOGIN {
 #ifdef HAVE_JOURNALD
     static void journaldLogger(QtMsgType type, const QMessageLogContext &context, const QString &msg) {
         int priority = LOG_INFO;
@@ -78,11 +78,11 @@ namespace SDDM {
                 file.open(QFile::Truncate | QFile::WriteOnly);
 
             // If we can't open the file, create it in a writable location
-            // It will look spmething like ~/.local/share/$appname/sddm.log
-            // or for the sddm user /var/lib/sddm/.local/share/$appname/sddm.log
+            // It will look spmething like ~/.local/share/$appname/plasmalogin.log
+            // or for the plasmalogin user /var/lib/plasmalogin/.local/share/$appname/plasmalogin.log
             if (!file.isOpen()) {
                 QDir().mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
-                file.setFileName(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QLatin1String("/sddm.log"));
+                file.setFileName(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QLatin1String("/plasmalogin.log"));
                 if (!file.open(QFile::Append | QFile::WriteOnly))
                     file.open(QFile::Truncate | QFile::WriteOnly);
             }
@@ -123,8 +123,8 @@ namespace SDDM {
     static void messageHandler(QtMsgType type, const QMessageLogContext &context, const QString &prefix, const QString &msg) {
 #ifdef HAVE_JOURNALD
         // don't log to journald if running interactively, this is likely
-        // the case when running sddm in test mode
-        static bool isInteractive = isatty(STDERR_FILENO) && qgetenv("USER") != "sddm";
+        // the case when running plasmalogin in test mode
+        static bool isInteractive = isatty(STDERR_FILENO) && qgetenv("USER") != "plasmalogin";
         if (!isInteractive) {
             // log to journald
             journaldLogger(type, context, msg);
@@ -151,4 +151,4 @@ namespace SDDM {
     }
 }
 
-#endif // SDDM_MESSAGEHANDLER_H
+#endif // PLASMALOGIN_MESSAGEHANDLER_H

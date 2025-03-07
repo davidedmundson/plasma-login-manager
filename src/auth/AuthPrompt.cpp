@@ -22,7 +22,7 @@
 #include "Auth.h"
 #include "AuthMessages.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class AuthPrompt::Private : public Prompt {
     public:
         Private(const Prompt *p) {

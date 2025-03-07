@@ -31,7 +31,7 @@
 
 #include <stdlib.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     static Request loginRequest {
         {   { AuthPrompt::LOGIN_USER, QStringLiteral("login:"), false },
             { AuthPrompt::LOGIN_PASSWORD, QStringLiteral("Password: "), true }
@@ -217,12 +217,12 @@ namespace SDDM {
     bool PamBackend::start(const QString &user) {
         bool result;
 
-        QString service = QStringLiteral("sddm");
+        QString service = QStringLiteral("plasmalogin");
 
-        if (user == QStringLiteral("sddm") && m_greeter)
-            service = QStringLiteral("sddm-greeter");
+        if (user == QStringLiteral("plasmalogin") && m_greeter)
+            service = QStringLiteral("plasmalogin-greeter");
         else if (m_autologin)
-            service = QStringLiteral("sddm-autologin");
+            service = QStringLiteral("plasmalogin-autologin");
         result = m_pam->start(service, user);
 
         if (!result)

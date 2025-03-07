@@ -26,7 +26,7 @@
 
 #include "Auth.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Prompt {
     public:
         Prompt() { }

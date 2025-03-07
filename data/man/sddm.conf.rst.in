@@ -1,15 +1,15 @@
 ===========
- sddm.conf
+ plasmalogin.conf
 ===========
 
 ----------------------------------
-sddm display manager configuration
+plasmalogin display manager configuration
 ----------------------------------
 
 :Date: March 2021
-:Version: sddm @SDDM_VERSION_STRING@
+:Version: plasmalogin @PLASMALOGIN_VERSION_STRING@
 :Manual section: 5
-:Manual group: sddm
+:Manual group: plasmalogin
 
 SYNOPSIS
 ========
@@ -28,7 +28,7 @@ Configuration loads all files in the configuration directories followed by the c
 DESCRIPTION
 ===========
 
-This file configures various parameters of the sddm display manager **sddm**\(1\).
+This file configures various parameters of the plasmalogin display manager **plasmalogin**\(1\).
 If this file is not available, default values are used.
 
 OPTIONS
@@ -56,7 +56,7 @@ OPTIONS
 	Default value is "@REBOOT_COMMAND@".
 
 `Numlock=`
-	Change numlock state when **sddm-greeter** starts.
+	Change numlock state when **plasmalogin-greeter** starts.
 	Valid values are `on`, `off` or `none`.
 	If property is set to `none`, numlock won't be changed.
 	Default value is "none".
@@ -136,25 +136,25 @@ OPTIONS
 
 `SessionLogFile=`
         Path to the user session log file, relative to the home directory.
-        Default value is ".local/share/sddm/xorg-session.log".
+        Default value is ".local/share/plasmalogin/xorg-session.log".
 
 `DisplayCommand=`
 	Path of script to execute when starting the display server.
 	The script will be executed as root when General.DisplayServer
-	is "x11", otherwise as sddm user.
+	is "x11", otherwise as plasmalogin user.
 	Default value is "@DATA_INSTALL_DIR@/scripts/Xsetup".
 
 `DisplayStopCommand=`
 	Path of script to execute when stopping the display server.
 	The script will be executed as root when General.DisplayServer
-	is "x11", otherwise as sddm user.
+	is "x11", otherwise as plasmalogin user.
 	Default value is "@DATA_INSTALL_DIR@/scripts/Xstop".
 
 `MinimumVT=`
 	Minimum virtual terminal number that will be used
 	by the first display. Virtual terminal number will
 	increase as new displays added.
-	This setting is no longer available since SDDM v0.20.
+	This setting is no longer available since PLASMALOGIN v0.20.
 
 `EnableHiDPI=`
 	Enables Qt's automatic HiDPI scaling.
@@ -184,7 +184,7 @@ The `UserAuthFile=` option was removed, the file is always created as
 
 `SessionLogFile=`
         Path to the user session log file, relative to the home directory.
-        Default value is ".local/share/sddm/wayland-session.log".
+        Default value is ".local/share/plasmalogin/wayland-session.log".
 
 `EnableHiDPI=`
 	Enables Qt's automatic HiDPI scaling.
@@ -195,7 +195,7 @@ The `UserAuthFile=` option was removed, the file is always created as
 
 `DefaultPath=`
 	Default path to set after successfully logging in.
-	This is also where SDDM looks for programs.
+	This is also where PLASMALOGIN looks for programs.
 	Default value is "/usr/local/bin:/usr/bin:/bin".
 
 `MinimumUid=`
@@ -249,6 +249,6 @@ The `UserAuthFile=` option was removed, the file is always created as
 SEE ALSO
 ========
 
-**sddm**\(1\)
+**plasmalogin**\(1\)
 
-The full documentation for sddm is available at https://github.com/sddm/sddm
+The full documentation for plasmalogin is available at https://github.com/plasmalogin/plasmalogin

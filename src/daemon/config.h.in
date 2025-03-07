@@ -1,2 +1,2 @@
 #pragma once
-static const int SDDM_INITIAL_VT = @SDDM_INITIAL_VT@;
+static const int PLASMALOGIN_INITIAL_VT = @PLASMALOGIN_INITIAL_VT@;

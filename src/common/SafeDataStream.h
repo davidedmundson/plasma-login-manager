@@ -24,7 +24,7 @@
 #include <QtCore/QDataStream>
 #include <QByteArray>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class SafeDataStream : public QDataStream {
     public:
         SafeDataStream(QIODevice* device);

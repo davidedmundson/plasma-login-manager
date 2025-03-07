@@ -25,7 +25,7 @@
 
 #include <QtQml/QQmlListProperty>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Auth;
     class AuthPrompt;
     class Request;

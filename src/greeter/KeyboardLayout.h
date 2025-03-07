@@ -22,7 +22,7 @@
 
 #include <QtCore/QObject>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class KeyboardLayout : public QObject {
         Q_OBJECT
         Q_PROPERTY(QString shortName READ shortName CONSTANT)

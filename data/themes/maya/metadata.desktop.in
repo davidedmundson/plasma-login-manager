@@ -1,10 +1,10 @@
-[SddmGreeterTheme]
+[PlasmaLoginGreeterTheme]
 Name=maya
 Description=Simple Material inspired theme
 Author=Sanjeev Premi
 Copyright=(c) 2016, Sanjeev Premi
 License=CC-BY-SA
-Type=sddm-theme
+Type=plasmalogin-theme
 Version=0.1
 Website=https://github.com/spremi
 Screenshot=screenshots/hi_IN.png

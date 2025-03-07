@@ -7,8 +7,8 @@
 
 # Note that the respective logout scripts are not sourced.
 
-# Backup the user shell setting into SDDM specific variable
-SDDM_USER_SHELL=$SHELL
+# Backup the user shell setting into PLASMALOGIN specific variable
+PLASMALOGIN_USER_SHELL=$SHELL
 
 case $SHELL in
   */bash)
@@ -44,6 +44,6 @@ case $SHELL in
 esac
 
 # Restore user shell setting that may have been clobbered by setting environment
-export SHELL=$SDDM_USER_SHELL
+export SHELL=$PLASMALOGIN_USER_SHELL
 
 exec $@

@@ -24,7 +24,7 @@
 #include <QGuiApplication>
 #include <QScreen>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class ScreenModelPrivate {
     public:
         QScreen *screen { nullptr };

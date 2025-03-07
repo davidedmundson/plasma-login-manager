@@ -56,7 +56,7 @@
 static int s_ttyFailures = 0;
 #define STRINGIFY(x) #x
 
-namespace SDDM {
+namespace PLASMALOGIN {
     bool isTtyInUse(const QString &desiredTty) {
         if (Logind::isAvailable()) {
             OrgFreedesktopLogin1ManagerInterface manager(Logind::serviceName(), Logind::managerPath(), QDBusConnection::systemBus());
@@ -77,8 +77,8 @@ namespace SDDM {
     }
 
     int fetchAvailableVt() {
-        if (!isTtyInUse(QStringLiteral("tty" STRINGIFY(SDDM_INITIAL_VT)))) {
-            return SDDM_INITIAL_VT;
+        if (!isTtyInUse(QStringLiteral("tty" STRINGIFY(PLASMALOGIN_INITIAL_VT)))) {
+            return PLASMALOGIN_INITIAL_VT;
         }
         const auto vt = VirtualTerminal::currentVt();
         if (vt > 0 && !isTtyInUse(QStringLiteral("tty%1").arg(vt))) {
@@ -167,7 +167,7 @@ namespace SDDM {
             }
             // It might be the case that we are trying a tty that has been taken over by a
             // different process. In such a case, switch back to the initial one and try again.
-            VirtualTerminal::jumpToVt(SDDM_INITIAL_VT, true);
+            VirtualTerminal::jumpToVt(PLASMALOGIN_INITIAL_VT, true);
             stop();
         });
         connect(m_greeter, &Greeter::displayServerFailed, this, &Display::displayServerFailed);
@@ -252,7 +252,7 @@ namespace SDDM {
 
         if (!daemonApp->testing()) {
             // change the owner and group of the socket to avoid permission denied errors
-            struct passwd *pw = getpwnam("sddm");
+            struct passwd *pw = getpwnam("plasmalogin");
             if (pw) {
                 if (chown(qPrintable(m_socketServer->socketAddress()), pw->pw_uid, pw->pw_gid) == -1) {
                     qWarning() << "Failed to change owner of the socket";
@@ -333,9 +333,9 @@ namespace SDDM {
                         const Session &session) {
         m_socket = socket;
 
-        //the SDDM user has special privileges that skip password checking so that we can load the greeter
-        //block ever trying to log in as the SDDM user
-        if (user == QLatin1String("sddm")) {
+        //the PLASMALOGIN user has special privileges that skip password checking so that we can load the greeter
+        //block ever trying to log in as the PLASMALOGIN user
+        if (user == QLatin1String("plasmalogin")) {
             emit loginFailed(m_socket);
             return;
         }
@@ -419,7 +419,7 @@ namespace SDDM {
             for(const SessionInfo &s : reply.value()) {
                 if (s.userName == user) {
                     OrgFreedesktopLogin1SessionInterface session(Logind::serviceName(), s.sessionPath.path(), QDBusConnection::systemBus());
-                    if (session.service() == QLatin1String("sddm") && session.state() == QLatin1String("online")) {
+                    if (session.service() == QLatin1String("plasmalogin") && session.state() == QLatin1String("online")) {
                         m_reuseSessionId = s.sessionId;
                         break;
                     }
@@ -537,7 +537,7 @@ namespace SDDM {
     }
 
     void Display::slotHelperFinished(Auth::HelperExitStatus status) {
-        // Don't restart greeter and display server unless sddm-helper exited
+        // Don't restart greeter and display server unless plasmalogin-helper exited
         // with an internal error or the user session finished successfully,
         // we want to avoid greeter from restarting when an authentication
         // error happens (in this case we want to show the message from the

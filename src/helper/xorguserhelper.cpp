@@ -28,7 +28,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 XOrgUserHelper::XOrgUserHelper(QObject *parent)
     : QObject(parent)
@@ -263,4 +263,4 @@ void XOrgUserHelper::displayFinished()
     }
 }
 
-} // namespace SDDM
+} // namespace PLASMALOGIN

@@ -18,14 +18,14 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_DISPLAYSERVER_H
-#define SDDM_DISPLAYSERVER_H
+#ifndef PLASMALOGIN_DISPLAYSERVER_H
+#define PLASMALOGIN_DISPLAYSERVER_H
 
 #include <QObject>
 
 class QProcess;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Display;
 
     class DisplayServer : public QObject {
@@ -60,4 +60,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_DISPLAYSERVER_H
+#endif // PLASMALOGIN_DISPLAYSERVER_H

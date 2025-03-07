@@ -25,7 +25,7 @@
 #include <QtCore/QProcessEnvironment>
 #include <security/pam_appl.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class PamBackend;
     /**
     * Class wrapping the standard Linux-PAM library calls
@@ -157,7 +157,7 @@ namespace SDDM {
         /**
         * pam_start - initialization of PAM transaction
         *
-        * \param service PAM service name, e.g. "sddm"
+        * \param service PAM service name, e.g. "plasmalogin"
         * \param pam_conversation pointer to the PAM conversation structure to be used
         * \param user username
         *

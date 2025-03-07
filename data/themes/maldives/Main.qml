@@ -23,7 +23,7 @@
 ***************************************************************************/
 
 import QtQuick 2.0
-import SddmComponents 2.0
+import PlasmaLoginComponents 2.0
 
 Rectangle {
     id: container
@@ -38,7 +38,7 @@ Rectangle {
     TextConstants { id: textConstants }
 
     Connections {
-        target: sddm
+        target: plasmalogin
 
         function onLoginSucceeded() {
             errorMessage.color = "steelblue"
@@ -99,7 +99,7 @@ Rectangle {
                     verticalAlignment: Text.AlignVCenter
                     height: text.implicitHeight
                     width: parent.width
-                    text: textConstants.welcomeText.arg(sddm.hostName)
+                    text: textConstants.welcomeText.arg(plasmalogin.hostName)
                     wrapMode: Text.WordWrap
                     font.pixelSize: 24
                     elide: Text.ElideRight
@@ -127,7 +127,7 @@ Rectangle {
 
                         Keys.onPressed: function (event) {
                             if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                                sddm.login(name.text, password.text, sessionIndex)
+                                plasmalogin.login(name.text, password.text, sessionIndex)
                                 event.accepted = true
                             }
                         }
@@ -154,7 +154,7 @@ Rectangle {
 
                         Keys.onPressed: function (event) {
                             if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                                sddm.login(name.text, password.text, sessionIndex)
+                                plasmalogin.login(name.text, password.text, sessionIndex)
                                 event.accepted = true
                             }
                         }
@@ -245,7 +245,7 @@ Rectangle {
                         text: textConstants.login
                         width: parent.btnWidth
 
-                        onClicked: sddm.login(name.text, password.text, sessionIndex)
+                        onClicked: plasmalogin.login(name.text, password.text, sessionIndex)
 
                         KeyNavigation.backtab: layoutBox; KeyNavigation.tab: shutdownButton
                     }
@@ -255,7 +255,7 @@ Rectangle {
                         text: textConstants.shutdown
                         width: parent.btnWidth
 
-                        onClicked: sddm.powerOff()
+                        onClicked: plasmalogin.powerOff()
 
                         KeyNavigation.backtab: loginButton; KeyNavigation.tab: rebootButton
                     }
@@ -265,7 +265,7 @@ Rectangle {
                         text: textConstants.reboot
                         width: parent.btnWidth
 
-                        onClicked: sddm.reboot()
+                        onClicked: plasmalogin.reboot()
 
                         KeyNavigation.backtab: shutdownButton; KeyNavigation.tab: name
                     }

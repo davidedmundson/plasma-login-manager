@@ -39,7 +39,7 @@
 #include "Constants.h"
 #include "XAuth.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 XAuth::XAuth()
 {
@@ -179,4 +179,4 @@ bool XAuth::writeCookieToFile(const QString &display, const QString &fileName,
     return true;
 }
 
-} // namespace SDDM
+} // namespace PLASMALOGIN

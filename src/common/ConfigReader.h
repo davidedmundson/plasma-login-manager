@@ -38,26 +38,26 @@
 
 // config wrapper
 #define Config(name, file, dir, sysDir, ...) \
-    class name : public SDDM::ConfigBase, public SDDM::ConfigSection { \
+    class name : public PLASMALOGIN::ConfigBase, public PLASMALOGIN::ConfigSection { \
     public: \
-        name() : SDDM::ConfigBase(file, dir, sysDir), SDDM::ConfigSection(this, QStringLiteral(IMPLICIT_SECTION)) { \
+        name() : PLASMALOGIN::ConfigBase(file, dir, sysDir), PLASMALOGIN::ConfigSection(this, QStringLiteral(IMPLICIT_SECTION)) { \
             load(); \
         } \
-        void save() { SDDM::ConfigBase::save(nullptr, nullptr); } \
-        void save(SDDM::ConfigEntryBase *) const = delete; \
+        void save() { PLASMALOGIN::ConfigBase::save(nullptr, nullptr); } \
+        void save(PLASMALOGIN::ConfigEntryBase *) const = delete; \
         QString toConfigFull() const { \
-            return SDDM::ConfigBase::toConfigFull(); \
+            return PLASMALOGIN::ConfigBase::toConfigFull(); \
         } \
         __VA_ARGS__ \
     }
 // entry wrapper
 #define Entry(name, type, default, description, ...) \
-    SDDM::ConfigEntry<type> name { this, QStringLiteral(#name), default, description, __VA_ARGS__ }
+    PLASMALOGIN::ConfigEntry<type> name { this, QStringLiteral(#name), default, description, __VA_ARGS__ }
 // section wrapper
 #define Section(name, ...) \
-    class name : public SDDM::ConfigSection { \
+    class name : public PLASMALOGIN::ConfigSection { \
     public: \
-        name (SDDM::ConfigBase *_parent, const QString &_name) : SDDM::ConfigSection(_parent, _name) { } \
+        name (PLASMALOGIN::ConfigBase *_parent, const QString &_name) : PLASMALOGIN::ConfigSection(_parent, _name) { } \
         __VA_ARGS__ \
     } name { this, QStringLiteral(#name) };
 
@@ -66,7 +66,7 @@ QTextStream &operator<<(QTextStream &str, const QStringList &list);
 QTextStream &operator>>(QTextStream &str, bool &val);
 QTextStream &operator<<(QTextStream &str, const bool &val);
 
-namespace SDDM {
+namespace PLASMALOGIN {
     template<class> class ConfigEntry;
     class ConfigSection;
     class ConfigBase;

@@ -19,14 +19,14 @@
  *
  */
 
-#ifndef SDDM_AUTH_SESSION_H
-#define SDDM_AUTH_SESSION_H
+#ifndef PLASMALOGIN_AUTH_SESSION_H
+#define PLASMALOGIN_AUTH_SESSION_H
 
 #include <QtCore/QObject>
 #include <QtCore/QProcess>
 #include <QtCore/QTemporaryFile>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class HelperApp;
     class XOrgUserHelper;
     class WaylandHelper;
@@ -79,4 +79,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_AUTH_SESSION_H
+#endif // PLASMALOGIN_AUTH_SESSION_H

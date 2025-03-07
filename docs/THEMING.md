@@ -1,6 +1,6 @@
 ## Themes
 
-SDDM themes are created using the QtQuick framework, a declarative framework to develop next-generation, hardware-accelerated user interfaces with fluid animations. QtQuick offers some basic components.
+PLASMALOGIN themes are created using the QtQuick framework, a declarative framework to develop next-generation, hardware-accelerated user interfaces with fluid animations. QtQuick offers some basic components.
 
 On top of QtQuick, we provide some custom components to make theme development even easier. For example a picturebox which can show user avatars. Most of the components can be used as views in a model-view sense.
 
@@ -13,11 +13,11 @@ We also provide models containing information about the screens, available sessi
     	index: sessionModel.lastIndex
     }
 
-Themes are run by a Qt 5 built sddm-greeter, unless the `QtVersion` property in metadata.desktop specifies a different version, such as `QtVersion=6` for using `sddm-greeter-qt6`.
+Themes are run by a Qt 5 built plasmalogin-greeter, unless the `QtVersion` property in metadata.desktop specifies a different version, such as `QtVersion=6` for using `plasmalogin-greeter-qt6`.
 
 ## Proxy Object
 
-We provide a proxy object, called as `sddm` to the themes as a context property. This object holds some useful properties about the host system. It also acts as a proxy between the greeter and the daemon. All of the methods called on this object will be transferred to the daemon through a local socket to be executed there.
+We provide a proxy object, called as `plasmalogin` to the themes as a context property. This object holds some useful properties about the host system. It also acts as a proxy between the greeter and the daemon. All of the methods called on this object will be transferred to the daemon through a local socket to be executed there.
 
 ### Properties
 
@@ -73,12 +73,12 @@ This model also has a `lastIndex` property holding the index of the last user su
 
 ## Testing
 
-You can test your themes using `sddm-greeter`. Note that in this mode, actions like shutdown, suspend or login will have no effect.
+You can test your themes using `plasmalogin-greeter`. Note that in this mode, actions like shutdown, suspend or login will have no effect.
 
-    sddm-greeter --test --theme /path/to/your/theme
+    plasmalogin-greeter --test --theme /path/to/your/theme
 
-If you have compiled SDDM with Qt4, you can also use it in a nested X session through Xephyr. To accomplish this use:
+If you have compiled PLASMALOGIN with Qt4, you can also use it in a nested X session through Xephyr. To accomplish this use:
 
-    sddm --test-mode
+    plasmalogin --test-mode
 
 When using Qt5, test-mode requires [at least xorg-server 1.15.0](https://bugs.freedesktop.org/show_bug.cgi?id=62346#c8), as older releases don't support GLX in Xephyr which is required by QtQuick2.

@@ -24,7 +24,7 @@
 
 #include "waylandsocketwatcher.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 WaylandSocketWatcher::WaylandSocketWatcher(QObject *parent )
     : QObject(parent)
@@ -104,4 +104,4 @@ void WaylandSocketWatcher::stop()
     Q_EMIT stopped();
 }
 
-} // namespace SDDM
+} // namespace PLASMALOGIN

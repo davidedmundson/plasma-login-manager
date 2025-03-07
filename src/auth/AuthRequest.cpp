@@ -22,7 +22,7 @@
 #include "Auth.h"
 #include "AuthMessages.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class AuthRequest::Private : public QObject {
         Q_OBJECT
     public slots:

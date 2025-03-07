@@ -45,7 +45,7 @@
 #include <QByteArray>
 #include <signal.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     HelperApp::HelperApp(int& argc, char** argv)
             : QCoreApplication(argc, argv)
             , m_backend(Backend::get(this))
@@ -382,6 +382,6 @@ namespace SDDM {
 }
 
 int main(int argc, char** argv) {
-    SDDM::HelperApp app(argc, argv);
+    PLASMALOGIN::HelperApp app(argc, argv);
     return app.exec();
 }

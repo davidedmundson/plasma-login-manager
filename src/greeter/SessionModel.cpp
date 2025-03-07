@@ -27,7 +27,7 @@
 #include <QProcessEnvironment>
 #include <QFileSystemWatcher>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class SessionModelPrivate {
     public:
         ~SessionModelPrivate() {

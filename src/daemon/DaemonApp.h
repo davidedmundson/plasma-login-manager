@@ -17,14 +17,14 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_DAEMONAPP_H
-#define SDDM_DAEMONAPP_H
+#ifndef PLASMALOGIN_DAEMONAPP_H
+#define PLASMALOGIN_DAEMONAPP_H
 
 #include <QCoreApplication>
 
 #define daemonApp DaemonApp::instance()
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Configuration;
     class DisplayManager;
     class PowerManager;
@@ -65,4 +65,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_DAEMONAPP_H
+#endif // PLASMALOGIN_DAEMONAPP_H

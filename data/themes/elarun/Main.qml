@@ -24,7 +24,7 @@
 ***************************************************************************/
 
 import QtQuick 2.0
-import SddmComponents 2.0
+import PlasmaLoginComponents 2.0
 
 Rectangle {
     width: 640
@@ -38,7 +38,7 @@ Rectangle {
     TextConstants { id: textConstants }
 
     Connections {
-        target: sddm
+        target: plasmalogin
         function onLoginSucceeded() {
         }
         function onInformationMessage(message) {
@@ -94,7 +94,7 @@ Rectangle {
                     color: "#0b678c"
                     opacity: 0.75
 
-                    text: sddm.hostName
+                    text: plasmalogin.hostName
 
                     font.bold: true
                     font.pixelSize: 18
@@ -137,7 +137,7 @@ Rectangle {
 
                             Keys.onPressed: function (event) {
                                 if (event.key === Qt.Key_Return || event.key === Qt.Key_Enter) {
-                                    sddm.login(user_entry.text, pw_entry.text, sessionIndex)
+                                    plasmalogin.login(user_entry.text, pw_entry.text, sessionIndex)
                                     event.accepted = true
                                 }
                             }
@@ -153,7 +153,7 @@ Rectangle {
 
                     source: Qt.resolvedUrl("images/login_normal.png")
 
-                    onClicked: sddm.login(user_entry.text, pw_entry.text, sessionIndex)
+                    onClicked: plasmalogin.login(user_entry.text, pw_entry.text, sessionIndex)
 
 		    KeyNavigation.backtab: pw_entry; KeyNavigation.tab: session
                 }
@@ -173,7 +173,7 @@ Rectangle {
                         ImageButton {
                             id: system_button
                             source: Qt.resolvedUrl("images/system_shutdown.png")
-                            onClicked: sddm.powerOff()
+                            onClicked: plasmalogin.powerOff()
 
 			    KeyNavigation.backtab: session; KeyNavigation.tab: reboot_button
                         }
@@ -181,7 +181,7 @@ Rectangle {
                         ImageButton {
                             id: reboot_button
                             source: Qt.resolvedUrl("images/system_reboot.png")
-                            onClicked: sddm.reboot()
+                            onClicked: plasmalogin.reboot()
 
                             KeyNavigation.backtab: system_button; KeyNavigation.tab: suspend_button
                         }
@@ -189,8 +189,8 @@ Rectangle {
                         ImageButton {
                             id: suspend_button
                             source: Qt.resolvedUrl("images/system_suspend.png")
-                            visible: sddm.canSuspend
-                            onClicked: sddm.suspend()
+                            visible: plasmalogin.canSuspend
+                            onClicked: plasmalogin.suspend()
 
                             KeyNavigation.backtab: reboot_button; KeyNavigation.tab: hibernate_button
                         }
@@ -198,8 +198,8 @@ Rectangle {
                         ImageButton {
                             id: hibernate_button
                             source: Qt.resolvedUrl("images/system_hibernate.png")
-                            visible: sddm.canHibernate
-                            onClicked: sddm.hibernate()
+                            visible: plasmalogin.canHibernate
+                            onClicked: plasmalogin.hibernate()
 
                             KeyNavigation.backtab: suspend_button; KeyNavigation.tab: session
                         }

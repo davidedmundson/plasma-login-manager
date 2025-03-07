@@ -22,7 +22,7 @@
 
 #include "KeyboardBackend.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 class WaylandKeyboardBackend : public KeyboardBackend
 {
@@ -38,6 +38,6 @@ public:
     void connectEventsDispatcher(KeyboardModel *model) override;
 };
 
-} // namespace SDDM
+} // namespace PLASMALOGIN
 
 #endif // WAYLANDKEYBOARDBACKEND_H

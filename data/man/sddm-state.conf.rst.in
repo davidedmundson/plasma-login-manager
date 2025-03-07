@@ -3,23 +3,23 @@
 ============
 
 ----------------------------------
-sddm display manager configuration
+plasmalogin display manager configuration
 ----------------------------------
 
 :Date: August 2014
-:Version: sddm @SDDM_VERSION_STRING@
+:Version: plasmalogin @PLASMALOGIN_VERSION_STRING@
 :Manual section: 5
-:Manual group: sddm
+:Manual group: plasmalogin
 
 SYNOPSIS
 ========
 
-~sddm/state.conf
+~plasmalogin/state.conf
 
 DESCRIPTION
 ===========
 
-This file carries state configuration for the sddm display manager **sddm**\(1\).
+This file carries state configuration for the plasmalogin display manager **plasmalogin**\(1\).
 
 OPTIONS
 =======
@@ -39,6 +39,6 @@ All options are configured in the [Last] section:
 SEE ALSO
 ========
 
-**sddm**\(1\)
+**plasmalogin**\(1\)
 
-The full documentation for sddm is available at https://github.com/sddm/sddm
+The full documentation for plasmalogin is available at https://github.com/plasmalogin/plasmalogin

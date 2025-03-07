@@ -17,8 +17,8 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_GREETER_H
-#define SDDM_GREETER_H
+#ifndef PLASMALOGIN_GREETER_H
+#define PLASMALOGIN_GREETER_H
 
 #include <QObject>
 
@@ -26,7 +26,7 @@
 
 class QProcess;
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Display;
     class ThemeMetadata;
     class ThemeConfig;
@@ -83,4 +83,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_GREETER_H
+#endif // PLASMALOGIN_GREETER_H

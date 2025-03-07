@@ -19,7 +19,7 @@
 
 #include "WaylandDisplayServer.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 WaylandDisplayServer::WaylandDisplayServer(Display *parent)
     : DisplayServer(parent)
@@ -73,4 +73,4 @@ void WaylandDisplayServer::setupDisplay()
 {
 }
 
-} // namespace SDDM
+} // namespace PLASMALOGIN

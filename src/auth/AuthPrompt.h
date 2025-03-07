@@ -23,7 +23,7 @@
 
 #include <QtCore/QObject>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Auth;
     class AuthRequest;
     class Prompt;

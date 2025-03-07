@@ -23,7 +23,7 @@
 #include <QtCore/QDebug>
 #include <QIODevice>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     SafeDataStream::SafeDataStream(QIODevice* device)
             : QDataStream(&m_data, QIODevice::ReadWrite)
             , m_device(device) { }

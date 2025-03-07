@@ -19,7 +19,7 @@
 
 #include "KeyboardLayout.h"
 
-namespace SDDM {
+namespace PLASMALOGIN {
     KeyboardLayout::KeyboardLayout(QString shortName, QString longName)
         : m_short(shortName)
         , m_long(longName)

@@ -24,7 +24,7 @@
 ***************************************************************************/
 
 import QtQuick 2.0
-import SddmComponents 2.0
+import PlasmaLoginComponents 2.0
 
 Rectangle {
     id: container
@@ -39,7 +39,7 @@ Rectangle {
     TextConstants { id: textConstants }
 
     Connections {
-        target: sddm
+        target: plasmalogin
         function onLoginSucceeded() {
         }
 
@@ -88,7 +88,7 @@ Rectangle {
                 focus: (listView.currentIndex === index) ? true : false
                 state: (listView.currentIndex === index) ? "active" : ""
 
-                onLogin: sddm.login(model.name, password, sessionIndex);
+                onLogin: plasmalogin.login(model.name, password, sessionIndex);
 
                 MouseArea {
                     anchors.fill: parent
@@ -186,11 +186,11 @@ Rectangle {
                     anchors.margins: 20
                     anchors.horizontalCenter: parent.horizontalCenter
                     color: "red"
-                    text: "The current theme cannot be loaded due to the errors below, please select another theme.\n" + __sddm_errors
+                    text: "The current theme cannot be loaded due to the errors below, please select another theme.\n" + __plasmalogin_errors
                     wrapMode: Text.WordWrap
                     width: parent.width - 60
                     font.pixelSize: 20
-                    visible: __sddm_errors !== ""
+                    visible: __plasmalogin_errors !== ""
                 }
             }
         }
@@ -268,9 +268,9 @@ Rectangle {
                     height: parent.height
                     source: "qrc:///theme/reboot.png"
 
-                    visible: sddm.canReboot
+                    visible: plasmalogin.canReboot
 
-                    onClicked: sddm.reboot()
+                    onClicked: plasmalogin.reboot()
 
                     KeyNavigation.backtab: layoutBox; KeyNavigation.tab: btnShutdown
                 }
@@ -280,9 +280,9 @@ Rectangle {
                     height: parent.height
                     source: "qrc:///theme/shutdown.png"
 
-                    visible: sddm.canPowerOff
+                    visible: plasmalogin.canPowerOff
 
-                    onClicked: sddm.powerOff()
+                    onClicked: plasmalogin.powerOff()
 
                     KeyNavigation.backtab: btnReboot; KeyNavigation.tab: prevUser
                 }

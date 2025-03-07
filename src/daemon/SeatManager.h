@@ -17,14 +17,14 @@
 * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ***************************************************************************/
 
-#ifndef SDDM_SEATMANAGER_H
-#define SDDM_SEATMANAGER_H
+#ifndef PLASMALOGIN_SEATMANAGER_H
+#define PLASMALOGIN_SEATMANAGER_H
 
 #include <QObject>
 #include <QHash>
 #include <QDBusObjectPath>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class Seat;
     class LogindSeat;
 
@@ -53,4 +53,4 @@ namespace SDDM {
     };
 }
 
-#endif // SDDM_SEATMANAGER_H
+#endif // PLASMALOGIN_SEATMANAGER_H

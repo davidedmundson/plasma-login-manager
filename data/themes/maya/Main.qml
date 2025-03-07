@@ -1,7 +1,7 @@
 //
 // [maya] main.qml
 //
-// Main script for the SDDM theme
+// Main script for the PLASMALOGIN theme
 //
 // (c) 2016 Sanjeev Premi (spremi@ymail.com)
 //
@@ -11,7 +11,7 @@
 
 
 import QtQuick 2.0
-import SddmComponents 2.0
+import PlasmaLoginComponents 2.0
 
 import "./components"
 
@@ -73,7 +73,7 @@ Rectangle {
   TextConstants { id: textConstants }
 
   Connections {
-    target: sddm
+    target: plasmalogin
 
     function onLoginSucceeded() {
       prompt_bg.color = successText
@@ -111,7 +111,7 @@ Rectangle {
     maya_busy.visible = true;
     maya_busy_anim.start()
 
-    sddm.login(maya_username.text, maya_password.text, maya_session.index);
+    plasmalogin.login(maya_username.text, maya_password.text, maya_session.index);
   }
 
 
@@ -196,7 +196,7 @@ Rectangle {
         width   : parent.width
         height  : parent.height
 
-        text    : textConstants.welcomeText.arg(sddm.hostName)
+        text    : textConstants.welcomeText.arg(plasmalogin.hostName)
         color   : normalText
 
         font.family         : opensans_cond_light.name
@@ -364,7 +364,7 @@ Rectangle {
         KeyNavigation.tab     : maya_session
         KeyNavigation.backtab : maya_reboot
 
-        onClicked: sddm.powerOff()
+        onClicked: plasmalogin.powerOff()
       }
 
       //
@@ -390,7 +390,7 @@ Rectangle {
         KeyNavigation.tab     : maya_shutdown
         KeyNavigation.backtab : maya_login
 
-        onClicked: sddm.reboot()
+        onClicked: plasmalogin.reboot()
       }
     }
   }

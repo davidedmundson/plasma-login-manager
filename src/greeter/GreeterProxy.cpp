@@ -27,7 +27,7 @@
 
 #include <QLocalSocket>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class GreeterProxyPrivate {
     public:
         SessionModel *sessionModel { nullptr };

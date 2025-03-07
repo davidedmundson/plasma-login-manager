@@ -1,11 +1,11 @@
-The SDDM team is proud to announce the release ${next} of SDDM,
+The PLASMALOGIN team is proud to announce the release ${next} of PLASMALOGIN,
 the Simple Desktop Display Manager.
 
-SDDM is made possible thanks to the collaborative work of the [Liri](https://liri.io),
+PLASMALOGIN is made possible thanks to the collaborative work of the [Liri](https://liri.io),
 [KDE](https://www.kde.org) and [LXQt](http://lxqt.org) projects, as well as the help and contributions from dozens
 of other developers.
 
-SDDM is developed by volunteers, please consider [donating](https://www.bountysource.com/teams/sddm)
+PLASMALOGIN is developed by volunteers, please consider [donating](https://www.bountysource.com/teams/plasmalogin)
 money that can be used to support the features that you most desire.
 
 [INSERT HIGHLIGHTS HERE]
@@ -25,14 +25,14 @@ Release notes:
 ]
 
 The list of changes is also available in our CHANGELOG file:
-  https://github.com/sddm/sddm/blob/v${next}/ChangeLog
+  https://github.com/plasmalogin/plasmalogin/blob/v${next}/ChangeLog
 
-The SDDM team is working very hard towards SDDM 1.0.0.
+The PLASMALOGIN team is working very hard towards PLASMALOGIN 1.0.0.
 Want to help us? Want to join us? Found any bugs?
 Please file bug reports and pull requests on our Github tracker:
-  https://github.com/sddm/sddm/issues
+  https://github.com/plasmalogin/plasmalogin/issues
 
-The ${next} sources are hosted on GitHub, release tag is [here](https://github.com/sddm/sddm/releases/tag/v${next}).
+The ${next} sources are hosted on GitHub, release tag is [here](https://github.com/plasmalogin/plasmalogin/releases/tag/v${next}).
 Please see the "INSTALL" file for build instructions.
 
 We would like to thank the following developers for their contributions to this release:

@@ -30,7 +30,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-namespace SDDM {
+namespace PLASMALOGIN {
 
 WaylandHelper::WaylandHelper(QObject *parent)
     : QObject(parent)
@@ -137,4 +137,4 @@ void WaylandHelper::startGreeter(const QString &cmd)
     }
 }
 
-} // namespace SDDM
+} // namespace PLASMALOGIN

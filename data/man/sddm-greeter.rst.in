@@ -1,33 +1,33 @@
 ==============
- sddm-greeter
+ plasmalogin-greeter
 ==============
 
 ----------------------------
-sddm display manager greeter
+plasmalogin display manager greeter
 ----------------------------
 
 :Date: May 2014
-:Version: sddm @SDDM_VERSION_STRING@
+:Version: plasmalogin @PLASMALOGIN_VERSION_STRING@
 :Manual section: 1
-:Manual group: sddm
+:Manual group: plasmalogin
 
 SYNOPSIS
 ========
 
-sddm-greeter [OPTIONS...]
+plasmalogin-greeter [OPTIONS...]
 
 DESCRIPTION
 ===========
 
-sddm is a display and login manager based on Qt technologies.
+plasmalogin is a display and login manager based on Qt technologies.
 
 Using QtQuick and QML, designers are given the ability to
-easily create pleasant, modern looking interfaces for sddm.
+easily create pleasant, modern looking interfaces for plasmalogin.
 
-sddm-greeter is an auxiliary process that displays the greeter, a graphical
+plasmalogin-greeter is an auxiliary process that displays the greeter, a graphical
 user interface to perform the authentication and select the session to run.
 
-It is launched by the sddm daemon, end users are not meant to run it.
+It is launched by the plasmalogin daemon, end users are not meant to run it.
 
 OPTIONS
 =======
@@ -36,7 +36,7 @@ OPTIONS
 	Specify theme full path.
 
 --socket `NAME`
-	Specify the socket used to communicate with sddm daemon.
+	Specify the socket used to communicate with plasmalogin daemon.
 
 --test-mode
 	Start greeter in test mode.
@@ -57,11 +57,11 @@ FILES
 	Local configuration file for compatibility
 
 **@DATA_INSTALL_DIR@/themes**
-	Where sddm looks for themes
+	Where plasmalogin looks for themes
 
 SEE ALSO
 ========
 
-**sddm**\(1\), **sddm.conf**\(5\)
+**plasmalogin**\(1\), **plasmalogin.conf**\(5\)
 
-The full documentation for sddm is available at https://github.com/sddm/sddm
+The full documentation for plasmalogin is available at https://github.com/plasmalogin/plasmalogin

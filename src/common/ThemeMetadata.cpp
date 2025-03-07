@@ -22,7 +22,7 @@
 
 #include <QSettings>
 
-namespace SDDM {
+namespace PLASMALOGIN {
     class ThemeMetadataPrivate {
     public:
         QString mainScript { QStringLiteral("Main.qml") };
@@ -58,9 +58,9 @@ namespace SDDM {
     void ThemeMetadata::setTo(const QString &path) {
         QSettings settings(path, QSettings::IniFormat);
         // read values
-        d->mainScript = settings.value(QStringLiteral("SddmGreeterTheme/MainScript"), QStringLiteral("Main.qml")).toString();
-        d->configFile = settings.value(QStringLiteral("SddmGreeterTheme/ConfigFile"), QStringLiteral("theme.conf")).toString();
-        d->translationsDirectory = settings.value(QStringLiteral("SddmGreeterTheme/TranslationsDirectory"), QStringLiteral(".")).toString();
-        d->qtVersion = settings.value(QStringLiteral("SddmGreeterTheme/QtVersion"), 5).toInt();
+        d->mainScript = settings.value(QStringLiteral("PlasmaLoginGreeterTheme/MainScript"), QStringLiteral("Main.qml")).toString();
+        d->configFile = settings.value(QStringLiteral("PlasmaLoginGreeterTheme/ConfigFile"), QStringLiteral("theme.conf")).toString();
+        d->translationsDirectory = settings.value(QStringLiteral("PlasmaLoginGreeterTheme/TranslationsDirectory"), QStringLiteral(".")).toString();
+        d->qtVersion = settings.value(QStringLiteral("PlasmaLoginGreeterTheme/QtVersion"), 5).toInt();
     }
 }

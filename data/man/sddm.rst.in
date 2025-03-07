@@ -1,5 +1,5 @@
 ======
- sddm
+ plasmalogin
 ======
 
 ----------------------------------
@@ -7,30 +7,30 @@ the simple desktop display manager
 ----------------------------------
 
 :Date: May 2014
-:Version: sddm @SDDM_VERSION_STRING@
+:Version: plasmalogin @PLASMALOGIN_VERSION_STRING@
 :Manual section: 1
-:Manual group: sddm
+:Manual group: plasmalogin
 
 SYNOPSIS
 ========
 
-sddm [OPTIONS...]
+plasmalogin [OPTIONS...]
 
 DESCRIPTION
 ===========
 
-sddm is a display and login manager based on Qt technologies.
+plasmalogin is a display and login manager based on Qt technologies.
 
 Using QtQuick and QML, designers are given the ability to
-easily create pleasant, modern looking interfaces for sddm.
+easily create pleasant, modern looking interfaces for plasmalogin.
 
-sddm runs the greeter as a system user named **sddm**
-whose home directory needs to be set to **/var/lib/sddm**.
+plasmalogin runs the greeter as a system user named **plasmalogin**
+whose home directory needs to be set to **/var/lib/plasmalogin**.
 
 If pam and systemd are available, the greeter will go through logind,
 which will give it access to drm devices.
 
-Distributions without pam and systemd will need to put the **sddm** user
+Distributions without pam and systemd will need to put the **plasmalogin** user
 into the **video** group, otherwise errors regarding GL and drm devices
 might be experienced.
 
@@ -63,11 +63,11 @@ FILES
 	Local configuration file for compatibility
 
 **@DATA_INSTALL_DIR@/themes**
-	Where sddm looks for themes
+	Where plasmalogin looks for themes
 
 SEE ALSO
 ========
 
-**sddm.conf**\(5\)
+**plasmalogin.conf**\(5\)
 
-The full documentation for sddm is available at https://github.com/sddm/sddm
+The full documentation for plasmalogin is available at https://github.com/plasmalogin/plasmalogin

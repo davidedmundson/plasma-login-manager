@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.4)
 
-project(SDDM)
+project(PLASMALOGIN)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
 # Set version
-set(SDDM_VERSION_MAJOR 0)
-set(SDDM_VERSION_MINOR 21)
-set(SDDM_VERSION_PATCH 0)
-set(SDDM_VERSION_STRING "${SDDM_VERSION_MAJOR}.${SDDM_VERSION_MINOR}.${SDDM_VERSION_PATCH}")
-add_compile_definitions("SDDM_VERSION=\"${SDDM_VERSION_STRING}\"")
+set(PLASMALOGIN_VERSION_MAJOR 0)
+set(PLASMALOGIN_VERSION_MINOR 21)
+set(PLASMALOGIN_VERSION_PATCH 0)
+set(PLASMALOGIN_VERSION_STRING "${PLASMALOGIN_VERSION_MAJOR}.${PLASMALOGIN_VERSION_MINOR}.${PLASMALOGIN_VERSION_PATCH}")
+add_compile_definitions("PLASMALOGIN_VERSION=\"${PLASMALOGIN_VERSION_STRING}\"")
 
 # Options
 option(BUILD_MAN_PAGES "Build man pages" OFF)
@@ -151,7 +151,7 @@ add_feature_info("elogind" ELOGIND_FOUND "elogind support")
 
 # Default behaviour if neither systemd nor elogind is used
 if (NOT ELOGIND_FOUND AND NOT SYSTEMD_FOUND)
-    # Set the VT on which sddm will normally appear, and the
+    # Set the VT on which plasmalogin will normally appear, and the
     # commands for shutdown and reboot. On FreeBSD, there are
     # normally more getty's running than on Linux.
     if("${CMAKE_SYSTEM_NAME}" STREQUAL "FreeBSD")
@@ -163,9 +163,9 @@ if (NOT ELOGIND_FOUND AND NOT SYSTEMD_FOUND)
 endif()
 
 if (SYSTEMD_FOUND)
-    set(RUNTIME_DIR_DEFAULT "/run/sddm")
+    set(RUNTIME_DIR_DEFAULT "/run/plasmalogin")
 else()
-    set(RUNTIME_DIR_DEFAULT "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/run/sddm")
+    set(RUNTIME_DIR_DEFAULT "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/run/plasmalogin")
 endif()
 
 # utmps
@@ -173,23 +173,23 @@ find_package(utmps)
 add_feature_info("utmps" UTMPS_FOUND "utmps support")
 
 # Set constants
-set(DATA_INSTALL_DIR            "${CMAKE_INSTALL_FULL_DATADIR}/sddm"                CACHE PATH      "System application data install directory")
+set(DATA_INSTALL_DIR            "${CMAKE_INSTALL_FULL_DATADIR}/plasmalogin"                CACHE PATH      "System application data install directory")
 set(DBUS_CONFIG_DIR             "${CMAKE_INSTALL_FULL_DATADIR}/dbus-1/system.d"       CACHE PATH      "DBus config files directory")
-set(STATE_DIR                   "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/lib/sddm"      CACHE PATH      "State directory")
+set(STATE_DIR                   "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/lib/plasmalogin"      CACHE PATH      "State directory")
 set(RUNTIME_DIR                 "${RUNTIME_DIR_DEFAULT}"                            CACHE PATH      "Runtime data storage directory")
 set(QML_INSTALL_DIR             "${QT_IMPORTS_DIR}"                                 CACHE PATH      "QML component installation directory")
 
 set(SESSION_COMMAND             "${DATA_INSTALL_DIR}/scripts/Xsession"              CACHE PATH      "Script to execute when starting the X11 desktop session")
 set(WAYLAND_SESSION_COMMAND     "${DATA_INSTALL_DIR}/scripts/wayland-session"       CACHE PATH      "Script to execute when starting the Wayland desktop session")
 
-set(CONFIG_FILE                 "${CMAKE_INSTALL_FULL_SYSCONFDIR}/sddm.conf"        CACHE PATH      "Path of the sddm config file")
-set(CONFIG_DIR                  "${CMAKE_INSTALL_FULL_SYSCONFDIR}/sddm.conf.d"      CACHE PATH      "Path of the sddm config directory")
+set(CONFIG_FILE                 "${CMAKE_INSTALL_FULL_SYSCONFDIR}/plasmalogin.conf"        CACHE PATH      "Path of the plasmalogin config file")
+set(CONFIG_DIR                  "${CMAKE_INSTALL_FULL_SYSCONFDIR}/plasmalogin.conf.d"      CACHE PATH      "Path of the plasmalogin config directory")
 set(ACCOUNTSSERVICE_DATA_DIR    "/var/lib/AccountsService"                          CACHE PATH      "Path of the accountsservice data directory")
-set(SYSTEM_CONFIG_DIR           "${CMAKE_INSTALL_PREFIX}/lib/sddm/sddm.conf.d"      CACHE PATH      "Path of the system sddm config directory")
-set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/sddm.log"  CACHE PATH      "Path of the sddm log file")
-set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the sddm config file")
+set(SYSTEM_CONFIG_DIR           "${CMAKE_INSTALL_PREFIX}/lib/plasmalogin/plasmalogin.conf.d"      CACHE PATH      "Path of the system plasmalogin config directory")
+set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/plasmalogin.log"  CACHE PATH      "Path of the plasmalogin log file")
+set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the plasmalogin config file")
 set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations-qt${QT_MAJOR_VERSION}" CACHE PATH      "Components translations directory")
-set(SDDM_INITIAL_VT             "1"                                                 CACHE STRING    "Initial tty to use")
+set(PLASMALOGIN_INITIAL_VT             "1"                                                 CACHE STRING    "Initial tty to use")
 
 
 # Autodetect UID_MIN and UID_MAX from /etc/login.defs
