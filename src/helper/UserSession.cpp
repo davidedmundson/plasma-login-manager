@@ -114,19 +114,14 @@ namespace PLASMALOGIN {
 
         } else if (env.value(QStringLiteral("XDG_SESSION_TYPE")) == QLatin1String("wayland")) {
             if (env.value(QStringLiteral("XDG_SESSION_CLASS")) == QLatin1String("greeter")) {
-                Q_ASSERT(!m_displayServerCmd.isEmpty());
-                setProgram(QStringLiteral(LIBEXEC_INSTALL_DIR "/plasmalogin-helper-start-wayland"));
-                setArguments({m_displayServerCmd, m_path});
-                QProcess::start();
                 isWaylandGreeter = true;
-            } else {
-                setProgram(mainConfig.Wayland.SessionCommand.get());
-                setArguments(QStringList{m_path});
-                qInfo() << "Starting Wayland user session:" << program() << m_path;
-                QProcess::start();
-                closeWriteChannel();
-                closeReadChannel(QProcess::StandardOutput);
             }
+            setProgram(mainConfig.Wayland.SessionCommand.get());
+            setArguments(QStringList{m_path});
+            qInfo() << "Starting Wayland user session:" << program() << m_path;
+            QProcess::start();
+            closeWriteChannel();
+            closeReadChannel(QProcess::StandardOutput);
         } else {
             qCritical() << "Unable to run user session: unknown session type";
         }

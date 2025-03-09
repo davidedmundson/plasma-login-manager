@@ -133,7 +133,6 @@ namespace PLASMALOGIN {
                 m_terminalId = fetchAvailableVt();
             }
             m_displayServer = new WaylandDisplayServer(this);
-            m_greeter->setDisplayServerCommand(mainConfig.Wayland.CompositorCommand.get());
             break;
         }
 

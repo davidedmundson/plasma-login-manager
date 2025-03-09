@@ -45,7 +45,6 @@ namespace PLASMALOGIN {
         Entry(Numlock,             NumState,    NUM_NONE,                                       _S("Initial NumLock state. Can be on, off or none.\n"
                                                                                                    "If property is set to none, numlock won't be changed\n"
                                                                                                    "NOTE: Currently ignored if autologin is enabled."));
-        Entry(InputMethod,         QString,     QStringLiteral("qtvirtualkeyboard"),                   _S("Input method module"));
         Entry(Namespaces,          QStringList, QStringList(),                                  _S("Comma-separated list of Linux namespaces for user session to enter"));
         Entry(GreeterEnvironment,  QStringList, QStringList(),                                  _S("Comma-separated list of environment variables to be set"));
         //  Name   Entries (but it's a regular class again)
@@ -78,12 +77,10 @@ namespace PLASMALOGIN {
         );
 
         Section(Wayland,
-            Entry(CompositorCommand,   QString,     _S("weston --shell=kiosk"),                 _S("Path of the Wayland compositor to execute when starting the greeter"));
             Entry(SessionDir,          QStringList, {_S("/usr/local/share/wayland-sessions"),
                                                      _S("/usr/share/wayland-sessions")},        _S("Comma-separated list of directories containing available Wayland sessions"));
             Entry(SessionCommand,      QString,     _S(WAYLAND_SESSION_COMMAND),                _S("Path to a script to execute when starting the desktop session"));
             Entry(SessionLogFile,      QString,     _S(".local/share/plasmalogin/wayland-session.log"),_S("Path to the user session log file"));
-            Entry(EnableHiDPI,         bool,        true,                                       _S("Enable Qt's automatic high-DPI scaling"));
         );
 
         Section(Users,

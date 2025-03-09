@@ -60,10 +60,6 @@ endif (UTMPS_FOUND)
 
 install(TARGETS plasmalogin-helper RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}")
 
-add_executable(plasmalogin-helper-start-wayland HelperStartWayland.cpp waylandsocketwatcher.cpp waylandhelper.cpp ${CMAKE_SOURCE_DIR}/src/common/SignalHandler.cpp)
-target_link_libraries(plasmalogin-helper-start-wayland Qt${QT_MAJOR_VERSION}::Core)
-install(TARGETS plasmalogin-helper-start-wayland RUNTIME DESTINATION "${CMAKE_INSTALL_LIBEXECDIR}")
-
 add_executable(plasmalogin-helper-start-x11user HelperStartX11User.cpp xorguserhelper.cpp
                                                 ${CMAKE_SOURCE_DIR}/src/common/ConfigReader.cpp
                                                 ${CMAKE_SOURCE_DIR}/src/common/Configuration.cpp
@@ -77,5 +73,4 @@ install(TARGETS plasmalogin-helper-start-x11user RUNTIME DESTINATION "${CMAKE_IN
 if(JOURNALD_FOUND)
     target_link_libraries(plasmalogin-helper ${JOURNALD_LIBRARIES})
     target_link_libraries(plasmalogin-helper-start-x11user ${JOURNALD_LIBRARIES})
-    target_link_libraries(plasmalogin-helper-start-wayland ${JOURNALD_LIBRARIES})
 endif()
