@@ -24,7 +24,6 @@
 #include "DaemonApp.h"
 #include "DisplayManager.h"
 #include "Seat.h"
-#include "ThemeConfig.h"
 #include "ThemeMetadata.h"
 #include "Display.h"
 #include "XorgDisplayServer.h"
@@ -40,34 +39,15 @@ namespace PLASMALOGIN {
         : QObject(parent)
         , m_display(parent)
     {
-        m_metadata = new ThemeMetadata(QString());
-        m_themeConfig = new ThemeConfig(QString());
     }
 
     Greeter::~Greeter() {
         stop();
 
-        delete m_metadata;
-        delete m_themeConfig;
     }
 
     void Greeter::setSocket(const QString &socket) {
         m_socket = socket;
-    }
-
-    void Greeter::setTheme(const QString &theme) {
-        m_themePath = theme;
-
-        if (theme.isEmpty()) {
-            m_metadata->setTo(QString());
-            m_themeConfig->setTo(QString());
-        } else {
-            const QString path = QStringLiteral("%1/metadata.desktop").arg(m_themePath);
-            m_metadata->setTo(path);
-
-            QString configFile = QStringLiteral("%1/%2").arg(m_themePath).arg(m_metadata->configFile());
-            m_themeConfig->setTo(configFile);
-        }
     }
 
     QString Greeter::displayServerCommand() const
@@ -80,50 +60,19 @@ namespace PLASMALOGIN {
         m_displayServerCmd = cmd;
     }
 
-    QString Greeter::greeterPathForQt(int qtVersion)
-    {
-        const QString suffix = qtVersion == 5 ? QString() : QStringLiteral("-qt%1").arg(qtVersion);
-        return QStringLiteral(BIN_INSTALL_DIR "/plasmalogin-greeter%1").arg(suffix);
-    }
-
     bool Greeter::start() {
         // check flag
         if (m_started)
             return false;
 
-        // If no theme is given, use the default theme of the default greeter version
-        const int themeQtVersion = m_themePath.isEmpty() ? (QT_VERSION >> 16) : m_metadata->qtVersion();
-        QString greeterPath = greeterPathForQt(themeQtVersion);
+        QString greeterPath = QStringLiteral("/opt/kde6/lib/libexec/plasma-login-greeter");
         if (!QFileInfo(greeterPath).isExecutable()) {
-            qWarning() << "The theme at" << m_themePath << "requires missing" << greeterPath << ". Using fallback theme.";
-            setTheme(QString());
-            greeterPath = greeterPathForQt(QT_VERSION >> 16);
+            qWarning() << "could not find plasma-login";
         }
-
-        // themes
-        QString xcursorTheme = mainConfig.Theme.CursorTheme.get();
-        if (m_themeConfig->contains(QLatin1String("cursorTheme")))
-            xcursorTheme = m_themeConfig->value(QLatin1String("cursorTheme")).toString();
-        QString xcursorSize = mainConfig.Theme.CursorSize.get();
-        if (m_themeConfig->contains(QLatin1String("cursorSize")))
-            xcursorSize = m_themeConfig->value(QLatin1String("cursorSize")).toString();
-        QString platformTheme;
-        if (m_themeConfig->contains(QLatin1String("platformTheme")))
-            platformTheme = m_themeConfig->value(QLatin1String("platformTheme")).toString();
-        QString style;
-        if (m_themeConfig->contains(QLatin1String("style")))
-            style = m_themeConfig->value(QLatin1String("style")).toString();
 
         // greeter command
         QStringList args;
         args << QLatin1String("--socket") << m_socket;
-
-        if (!m_themePath.isEmpty())
-             args << QLatin1String("--theme") << m_themePath;
-        if (!platformTheme.isEmpty())
-            args << QLatin1String("-platformtheme") << platformTheme;
-        if (!style.isEmpty())
-            args << QLatin1String("-style") << style;
 
         Q_ASSERT(m_display);
         auto *displayServer = m_display->displayServer();
@@ -148,9 +97,6 @@ namespace PLASMALOGIN {
                 QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
                 env.insert(QStringLiteral("DISPLAY"), m_display->name());
                 env.insert(QStringLiteral("XAUTHORITY"), qobject_cast<XorgDisplayServer*>(displayServer)->authPath());
-                env.insert(QStringLiteral("XCURSOR_THEME"), xcursorTheme);
-                if (!xcursorSize.isEmpty())
-                    env.insert(QStringLiteral("XCURSOR_SIZE"), xcursorSize);
                 m_process->setProcessEnvironment(env);
             }
             // Greeter command
@@ -205,9 +151,6 @@ namespace PLASMALOGIN {
             }, sysenv, env);
 
             env.insert(QStringLiteral("PATH"), mainConfig.Users.DefaultPath.get());
-            env.insert(QStringLiteral("XCURSOR_THEME"), xcursorTheme);
-            if (!xcursorSize.isEmpty())
-                env.insert(QStringLiteral("XCURSOR_SIZE"), xcursorSize);
             env.insert(QStringLiteral("XDG_SEAT"), m_display->seat()->name());
             env.insert(QStringLiteral("XDG_SEAT_PATH"), daemonApp->displayManager()->seatPath(m_display->seat()->name()));
             env.insert(QStringLiteral("XDG_SESSION_PATH"), daemonApp->displayManager()->sessionPath(QStringLiteral("Session%1").arg(daemonApp->newSessionId())));
@@ -215,14 +158,7 @@ namespace PLASMALOGIN {
                 env.insert(QStringLiteral("XDG_VTNR"), QString::number(m_display->terminalId()));
             env.insert(QStringLiteral("XDG_SESSION_CLASS"), QStringLiteral("greeter"));
             env.insert(QStringLiteral("XDG_SESSION_TYPE"), m_display->sessionType());
-            if (m_display->displayServerType() == Display::X11DisplayServerType) {
-                env.insert(QStringLiteral("DISPLAY"), m_display->name());
-                env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("xcb"));
-                m_auth->setCookie(qobject_cast<XorgDisplayServer*>(displayServer)->cookie());
-            } else if (m_display->displayServerType() == Display::WaylandDisplayServerType) {
-                env.insert(QStringLiteral("QT_QPA_PLATFORM"), QStringLiteral("wayland"));
-                env.insert(QStringLiteral("QT_WAYLAND_SHELL_INTEGRATION"), QStringLiteral("xdg-shell"));
-            }
+
             m_auth->insertEnvironment(env);
 
             // log message

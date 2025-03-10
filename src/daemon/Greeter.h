@@ -39,7 +39,6 @@ namespace PLASMALOGIN {
         ~Greeter();
 
         void setSocket(const QString &socket);
-        void setTheme(const QString &theme);
 
         QString displayServerCommand() const;
         void setDisplayServerCommand(const QString &cmd);
