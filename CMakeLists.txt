@@ -189,7 +189,7 @@ set(SYSTEM_CONFIG_DIR           "${CMAKE_INSTALL_PREFIX}/lib/plasmalogin/plasmal
 set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/plasmalogin.log"  CACHE PATH      "Path of the plasmalogin log file")
 set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the plasmalogin config file")
 set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations-qt${QT_MAJOR_VERSION}" CACHE PATH      "Components translations directory")
-set(PLASMALOGIN_INITIAL_VT             "1"                                                 CACHE STRING    "Initial tty to use")
+set(PLASMALOGIN_INITIAL_VT             "5"                                                 CACHE STRING    "Initial tty to use")
 
 
 # Autodetect UID_MIN and UID_MAX from /etc/login.defs

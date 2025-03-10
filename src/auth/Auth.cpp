@@ -83,6 +83,7 @@ namespace PLASMALOGIN {
     }
 
     void Auth::SocketServer::handleNewConnection()  {
+        qDebug() << "HANDLE NEW CONNECTION";
         while (hasPendingConnections()) {
             Msg m = Msg::MSG_UNKNOWN;
             qint64 id;

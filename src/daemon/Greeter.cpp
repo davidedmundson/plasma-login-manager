@@ -65,14 +65,14 @@ namespace PLASMALOGIN {
         if (m_started)
             return false;
 
-        QString greeterPath = QStringLiteral("/opt/kde6/lib/libexec/plasma-login-greeter");
+        QString greeterPath = QStringLiteral("/opt/kde6/lib/libexec/startplasma-dev.sh");
         if (!QFileInfo(greeterPath).isExecutable()) {
             qWarning() << "could not find plasma-login";
         }
 
         // greeter command
         QStringList args;
-        args << QLatin1String("--socket") << m_socket;
+        args << QStringLiteral("-login-wayland");
 
         Q_ASSERT(m_display);
         auto *displayServer = m_display->displayServer();
@@ -92,13 +92,14 @@ namespace PLASMALOGIN {
 
             args << QStringLiteral("--test-mode");
 
+            QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
             if (m_display->displayServerType() == Display::X11DisplayServerType) {
                 // set process environment
-                QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
                 env.insert(QStringLiteral("DISPLAY"), m_display->name());
                 env.insert(QStringLiteral("XAUTHORITY"), qobject_cast<XorgDisplayServer*>(displayServer)->authPath());
-                m_process->setProcessEnvironment(env);
             }
+            m_process->setProcessEnvironment(env);
+
             // Greeter command
             m_process->start(greeterPath, args);
 
@@ -158,6 +159,7 @@ namespace PLASMALOGIN {
                 env.insert(QStringLiteral("XDG_VTNR"), QString::number(m_display->terminalId()));
             env.insert(QStringLiteral("XDG_SESSION_CLASS"), QStringLiteral("greeter"));
             env.insert(QStringLiteral("XDG_SESSION_TYPE"), m_display->sessionType());
+            env.insert(QStringLiteral("SDDM_SOCKET"), m_socket);
 
             m_auth->insertEnvironment(env);
 
@@ -165,7 +167,7 @@ namespace PLASMALOGIN {
             qDebug() << "Greeter starting...";
 
             // start greeter
-            m_auth->setUser(QStringLiteral("plasmalogin"));
+            m_auth->setUser(QStringLiteral("sddm")); //FIXME
             m_auth->setDisplayServerCommand(m_displayServerCmd);
             m_auth->setGreeter(true);
             m_auth->setSession(cmd.join(QLatin1Char(' ')));

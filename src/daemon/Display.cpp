@@ -113,21 +113,23 @@ namespace PLASMALOGIN {
         m_socketServer(new SocketServer(this)),
         m_greeter(new Greeter(this))
     {
+
+        qDebug() << "Starting" << m_displayServerType;
         // Create display server
         switch (m_displayServerType) {
-        case X11DisplayServerType:
-            if (seat()->canTTY()) {
-                m_terminalId = VirtualTerminal::setUpNewVt();
-            }
-            m_displayServer = new XorgDisplayServer(this);
-            break;
-        case X11UserDisplayServerType:
-            if (seat()->canTTY()) {
-                m_terminalId = fetchAvailableVt();
-            }
-            m_displayServer = new XorgUserDisplayServer(this);
-            m_greeter->setDisplayServerCommand(XorgUserDisplayServer::command(this));
-            break;
+        // case X11DisplayServerType:
+        //     if (seat()->canTTY()) {
+        //         m_terminalId = VirtualTerminal::setUpNewVt();
+        //     }
+        //     m_displayServer = new XorgDisplayServer(this);
+        //     break;
+        // case X11UserDisplayServerType:
+        //     if (seat()->canTTY()) {
+        //         m_terminalId = fetchAvailableVt();
+        //     }
+        //     m_displayServer = new XorgUserDisplayServer(this);
+        //     m_greeter->setDisplayServerCommand(XorgUserDisplayServer::command(this));
+        //     break;
         case WaylandDisplayServerType:
             if (seat()->canTTY()) {
                 m_terminalId = fetchAvailableVt();
@@ -251,7 +253,7 @@ namespace PLASMALOGIN {
 
         if (!daemonApp->testing()) {
             // change the owner and group of the socket to avoid permission denied errors
-            struct passwd *pw = getpwnam("plasmalogin");
+            struct passwd *pw = getpwnam("sddm");
             if (pw) {
                 if (chown(qPrintable(m_socketServer->socketAddress()), pw->pw_uid, pw->pw_gid) == -1) {
                     qWarning() << "Failed to change owner of the socket";
@@ -333,7 +335,7 @@ namespace PLASMALOGIN {
 
         //the PLASMALOGIN user has special privileges that skip password checking so that we can load the greeter
         //block ever trying to log in as the PLASMALOGIN user
-        if (user == QLatin1String("plasmalogin")) {
+        if (user == QLatin1String("sddm")) {
             emit loginFailed(m_socket);
             return;
         }
