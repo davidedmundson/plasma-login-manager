@@ -47,6 +47,9 @@
 #include <QDBusMessage>
 #include <QDBusReply>
 
+#include <KDesktopFile>
+#include <KConfigGroup>
+
 #include "Login1Manager.h"
 #include "Login1Session.h"
 #include "VirtualTerminal.h"
@@ -183,9 +186,9 @@ namespace PLASMALOGIN {
                 autologinSession = stateConfig.Last.Session.get();
             }
             if (findSessionEntry(mainConfig.Wayland.SessionDir.get(), autologinSession)) {
-                m_autologinSession.setTo(Session::WaylandSession, autologinSession);
+                m_autologinSession = Session(Session::WaylandSession, autologinSession);
             } else if (findSessionEntry(mainConfig.X11.SessionDir.get(), autologinSession)) {
-                m_autologinSession.setTo(Session::X11Session, autologinSession);
+                m_autologinSession = Session(Session::X11Session, autologinSession);
             } else {
                 qCritical() << "Unable to find autologin session entry" << autologinSession;
             }
@@ -380,6 +383,7 @@ namespace PLASMALOGIN {
             qCritical() << "Invalid session" << session.fileName();
             return false;
         }
+
         if (session.xdgSessionType().isEmpty()) {
             qCritical() << "Failed to find XDG session type for session" << session.fileName();
             return false;
@@ -424,8 +428,6 @@ namespace PLASMALOGIN {
         qDebug() << "Session" << m_sessionName << "selected, command:" << session.exec() << "for VT" << m_sessionTerminalId;
 
         QProcessEnvironment env;
-        env.insert(session.additionalEnv());
-
         env.insert(QStringLiteral("PATH"), mainConfig.Users.DefaultPath.get());
         env.insert(QStringLiteral("XDG_SEAT_PATH"), daemonApp->displayManager()->seatPath(seat()->name()));
         env.insert(QStringLiteral("XDG_SESSION_PATH"), daemonApp->displayManager()->sessionPath(QStringLiteral("Session%1").arg(daemonApp->newSessionId())));
@@ -453,7 +455,6 @@ namespace PLASMALOGIN {
         if (m_reuseSessionId.isNull()) {
             m_auth->setSession(session.exec());
         }
-        m_auth->insertEnvironment(env);
         m_auth->start();
 
         return true;
