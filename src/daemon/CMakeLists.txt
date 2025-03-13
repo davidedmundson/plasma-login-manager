@@ -62,12 +62,8 @@ target_link_libraries(plasmalogin
                       Qt${QT_MAJOR_VERSION}::Qml
                       KF6::ConfigCore
                       KF6::ConfigGui
-                      ${LIBXAU_LINK_LIBRARIES})
-if(PAM_FOUND)
-    target_link_libraries(plasmalogin ${PAM_LIBRARIES})
-else()
-    target_link_libraries(plasmalogin crypt)
-endif()
+                      ${LIBXAU_LINK_LIBRARIES}
+                      ${PAM_LIBRARIES})
 
 if(JOURNALD_FOUND)
     target_link_libraries(plasmalogin ${JOURNALD_LIBRARIES})
