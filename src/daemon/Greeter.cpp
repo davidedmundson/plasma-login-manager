@@ -25,7 +25,6 @@
 #include "DisplayManager.h"
 #include "Seat.h"
 #include "Display.h"
-#include "XorgDisplayServer.h"
 #include "XorgUserDisplayServer.h"
 #include "WaylandDisplayServer.h"
 
@@ -90,14 +89,6 @@ namespace PLASMALOGIN {
             qDebug() << "Greeter starting...";
 
             args << QStringLiteral("--test-mode");
-
-            QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-            if (m_display->displayServerType() == Display::X11DisplayServerType) {
-                // set process environment
-                env.insert(QStringLiteral("DISPLAY"), m_display->name());
-                env.insert(QStringLiteral("XAUTHORITY"), qobject_cast<XorgDisplayServer*>(displayServer)->authPath());
-            }
-            m_process->setProcessEnvironment(env);
 
             // Greeter command
             m_process->start(greeterPath, args);
